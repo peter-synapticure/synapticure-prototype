@@ -6,18 +6,29 @@
 <title>Synapticure — Mobile App Prototype</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:40px 20px;font-family:sans-serif;}
+body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:40px 20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
 :root{
-  --teal:#1A7B6E;--teal-dk:#125a50;--teal-lt:#e6f4f2;--teal-md:#2a9d8e;
-  --blue:#4a7fc1;--blue-lt:#eaf1fb;--blue-dk:#2c5f9e;
-  --navy:#1a2530;--gray:#6b7280;--gray-lt:#f3f4f6;
-  --border:#e2e8e6;--cream:#f9faf8;--white:#fff;
-  --red:#e04040;--amber:#d97706;--green:#16a34a;
+  /* Deck palette */
+  --navy:#1B3080;       /* primary — dark blue from deck headings */
+  --navy-dk:#12205a;    /* deeper navy */
+  --navy-lt:#eef1f9;    /* very light navy tint */
+  --blue:#4a7fc1;       /* cornflower — deck table headers */
+  --blue-lt:#dde8f7;    /* light blue — deck alternating rows */
+  --blue-dk:#2c5f9e;
+  --blue-mid:#5b8fd9;
+  --bg:#f2f5fb;         /* page background — light blue-gray */
+  --white:#ffffff;
+  --navy-text:#1B3080;
+  --gray:#5a6478;
+  --gray-lt:#e8ecf3;
+  --border:#d0d9ec;
+  --cream:#f7f9fd;
+  --red:#c0392b;        /* used sparingly like deck */
+  --amber:#b45309;
+  --green:#15803d;
 }
-.phone{width:375px;height:780px;background:var(--white);border-radius:44px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 12px #1c1c1e,0 0 0 14px #2c2c2e,0 0 60px rgba(0,0,0,0.4);}
+.phone{width:375px;height:780px;background:var(--white);border-radius:44px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 12px #1a1a2e,0 0 0 14px #22223b,0 0 60px rgba(0,0,0,0.45);}
 .sbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0;background:var(--white);}
-.sbar.dark{background:var(--teal);}
-.sbar.dark .s-time{color:white;}
 .s-time{font-size:15px;font-weight:600;color:var(--navy);font-family:'Georgia',serif;}
 .screen{display:none;flex:1;flex-direction:column;overflow:hidden;}
 .screen.on{display:flex;}
@@ -28,106 +39,106 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
 .bnav{height:80px;background:var(--white);border-top:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding-bottom:14px;flex-shrink:0;}
 .ni{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:5px 8px;}
 .ni .lbl{font-size:10px;color:var(--gray);}
-.ni.on .lbl{color:var(--blue);}
+.ni.on .lbl{color:var(--navy);}
 
 /* ONBOARDING */
-.ob{flex:1;display:flex;flex-direction:column;padding:28px 26px 24px;overflow-y:auto;}
-.ob-logo{display:flex;align-items:center;gap:10px;margin-bottom:26px;}
-.ob-mark{width:34px;height:34px;background:var(--teal);border-radius:9px;display:flex;align-items:center;justify-content:center;}
+.ob{flex:1;display:flex;flex-direction:column;padding:28px 26px 24px;overflow-y:auto;background:var(--bg);}
+.ob-mark{width:34px;height:34px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;}
 .ob-txt{font-family:'Georgia',serif;font-size:19px;font-weight:700;color:var(--navy);}
 .ob-prog{display:flex;gap:5px;margin-bottom:26px;}
 .ob-pip{height:3px;border-radius:2px;flex:1;background:var(--border);}
-.ob-pip.done{background:var(--teal);}
+.ob-pip.done{background:var(--navy);}
 .ob-h{font-family:'Georgia',serif;font-size:26px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;}
 .ob-sub{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:26px;}
-.ob-lbl{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.4px;margin-bottom:5px;display:block;}
-.ob-field{width:100%;border:1px solid var(--border);border-radius:11px;padding:13px 14px;font-size:15px;color:var(--navy);outline:none;background:var(--cream);margin-bottom:12px;}
-.ob-field:focus{border-color:var(--teal);}
-.ob-btn{background:var(--teal);color:white;border:none;border-radius:13px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:10px;}
-.ob-btn.sec{background:white;color:var(--teal);border:1.5px solid var(--teal);}
-.ob-btn.ghost{background:transparent;color:rgba(255,255,255,0.85);border:1.5px solid rgba(255,255,255,0.4);}
-.ob-btn.white{background:white;color:var(--teal);}
+.ob-lbl{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.4px;margin-bottom:5px;display:block;text-transform:uppercase;}
+.ob-field{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;font-size:15px;color:var(--navy);outline:none;background:var(--white);margin-bottom:12px;}
+.ob-field:focus{border-color:var(--navy);}
+.ob-btn{background:var(--navy);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:10px;letter-spacing:0.2px;}
+.ob-btn.ghost{background:transparent;color:rgba(255,255,255,0.85);border:1.5px solid rgba(255,255,255,0.35);}
+.ob-btn.white{background:white;color:var(--navy);}
 .ob-link{font-size:12px;color:var(--gray);text-align:center;margin-top:14px;}
-.ob-link span{color:var(--teal);font-weight:600;cursor:pointer;}
+.ob-link span{color:var(--navy);font-weight:700;cursor:pointer;}
 .ob-back{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--gray);cursor:pointer;margin-bottom:20px;}
 .cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px;}
-.cond-opt{border:1.5px solid var(--border);border-radius:13px;padding:14px 10px;text-align:center;cursor:pointer;background:var(--cream);}
-.cond-opt.sel{border-color:var(--teal);background:var(--teal-lt);}
-.cond-icon{width:38px;height:38px;background:var(--teal-lt);border-radius:9px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+.cond-opt{border:1.5px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;background:var(--white);}
+.cond-opt.sel{border-color:var(--navy);background:var(--navy-lt);}
+.cond-icon{width:38px;height:38px;background:var(--navy-lt);border-radius:9px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
 .cond-icon svg{width:20px;height:20px;}
 .cond-name{font-size:11px;font-weight:700;color:var(--navy);line-height:1.3;}
 .ins-list{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
-.ins-opt{border:1.5px solid var(--border);border-radius:11px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--cream);}
-.ins-opt.sel{border-color:var(--teal);background:var(--teal-lt);}
+.ins-opt{border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--white);}
+.ins-opt.sel{border-color:var(--navy);background:var(--navy-lt);}
 .ins-name{font-size:14px;font-weight:600;color:var(--navy);}
 .ins-chk{width:19px;height:19px;border-radius:50%;border:1.5px solid var(--border);}
-.ins-opt.sel .ins-chk{background:var(--teal);border-color:var(--teal);display:flex;align-items:center;justify-content:center;}
+.ins-opt.sel .ins-chk{background:var(--navy);border-color:var(--navy);display:flex;align-items:center;justify-content:center;}
 
 /* WELCOME */
-.welbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;}
-.welcircle{width:80px;height:80px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+.welbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;background:var(--bg);}
+.welcircle{width:80px;height:80px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
 .welh{font-family:'Georgia',serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:10px;}
 .welpills{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:0 0 28px;}
-.wpill{background:var(--teal-lt);border:1px solid rgba(26,123,110,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--teal-dk);font-weight:600;}
+.wpill{background:var(--navy-lt);border:1px solid rgba(27,48,128,0.18);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--navy);font-weight:600;}
 
-/* JOURNEY */
-.jhdr{background:var(--teal);padding:18px 18px 20px;}
+/* JOURNEY HEADER */
+.jhdr{background:var(--navy);padding:18px 18px 20px;}
 .jrow{display:flex;align-items:center;justify-content:space-between;}
-.jgreet{font-size:12px;color:rgba(255,255,255,0.72);margin-bottom:3px;}
+.jgreet{font-size:12px;color:rgba(255,255,255,0.65);margin-bottom:3px;letter-spacing:0.3px;text-transform:uppercase;}
 .jname{font-family:'Georgia',serif;font-size:21px;font-weight:700;color:white;}
-.notif{width:32px;height:32px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;}
-.ndot{position:absolute;top:5px;right:5px;width:7px;height:7px;background:var(--red);border-radius:50%;border:1.5px solid var(--teal);}
-.appt{background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);border-radius:13px;padding:12px 14px;margin-top:14px;cursor:pointer;}
-.abadge{font-size:10px;font-weight:700;color:rgba(255,255,255,0.65);letter-spacing:0.5px;margin-bottom:4px;}
+.notif{width:32px;height:32px;background:rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;}
+.ndot{position:absolute;top:5px;right:5px;width:7px;height:7px;background:#e55353;border-radius:50%;border:1.5px solid var(--navy);}
+.appt{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:12px 14px;margin-top:14px;cursor:pointer;}
+.abadge{font-size:10px;font-weight:700;color:rgba(255,255,255,0.55);letter-spacing:0.8px;margin-bottom:4px;text-transform:uppercase;}
 .atitle{font-family:'Georgia',serif;font-size:14px;color:white;margin-bottom:3px;}
-.ameta{font-size:11px;color:rgba(255,255,255,0.65);display:flex;align-items:center;justify-content:space-between;}
-.ajoin{background:white;color:var(--teal);border:none;border-radius:7px;padding:4px 11px;font-size:11px;font-weight:700;cursor:pointer;}
+.ameta{font-size:11px;color:rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:space-between;}
+.ajoin{background:white;color:var(--navy);border:none;border-radius:7px;padding:4px 11px;font-size:11px;font-weight:700;cursor:pointer;}
+
+/* DASHBOARD */
 .dsec{padding:16px 16px 0;}
 .dtitle{font-family:'Georgia',serif;font-size:16px;color:var(--navy);font-weight:700;margin-bottom:10px;}
 .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
-.ncard{background:var(--cream);border:1px solid var(--border);border-radius:13px;padding:12px;cursor:pointer;}
+.ncard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;}
 .nicon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
 .nicon svg{width:17px;height:17px;}
 .nlabel{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px;}
 .nmeta{font-size:11px;color:var(--gray);line-height:1.35;}
 .nchev{display:flex;justify-content:flex-end;margin-top:6px;}
 .todos{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
-.todo{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;}
+.todo{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;}
 .tdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 .ttext{font-size:12px;color:var(--navy);flex:1;}
-.tcat{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.3px;}
+.tcat{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.4px;text-transform:uppercase;}
 
 /* SCREENS */
-.shdr{background:var(--teal);padding:16px 18px 20px;flex-shrink:0;}
+.shdr{background:var(--navy);padding:16px 18px 20px;flex-shrink:0;}
 .shdr-t{font-family:'Georgia',serif;font-size:19px;color:white;font-weight:700;}
-.shdr-s{font-size:12px;color:rgba(255,255,255,0.72);margin-top:3px;}
-.fbar{padding:9px 14px;display:flex;gap:6px;overflow-x:auto;border-bottom:0.5px solid var(--border);flex-shrink:0;scrollbar-width:none;}
+.shdr-s{font-size:12px;color:rgba(255,255,255,0.6);margin-top:3px;}
+.fbar{padding:9px 14px;display:flex;gap:6px;overflow-x:auto;border-bottom:0.5px solid var(--border);flex-shrink:0;scrollbar-width:none;background:var(--bg);}
 .fbar::-webkit-scrollbar{display:none;}
 .fp{font-size:11px;border-radius:20px;padding:4px 11px;font-weight:600;white-space:nowrap;cursor:pointer;}
-.fp.a{background:var(--blue);color:white;}
-.fp.i{background:var(--cream);border:1px solid var(--border);color:var(--gray);}
-.rlist{padding:12px 16px 0;}
-.ylbl{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.6px;margin-bottom:8px;}
-.rrow{border:1px solid var(--border);border-radius:11px;padding:10px 12px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
-.rrow.hi{background:var(--blue-lt);border-color:rgba(74,127,193,0.25);}
-.rrow.teal{background:var(--teal-lt);border-color:rgba(26,123,110,0.25);}
-.rrow.dim{opacity:0.55;}
+.fp.a{background:var(--navy);color:white;}
+.fp.i{background:var(--white);border:1px solid var(--border);color:var(--gray);}
+.rlist{padding:12px 16px 0;background:var(--bg);min-height:100%;}
+.ylbl{font-size:11px;font-weight:700;color:var(--blue-dk);letter-spacing:0.7px;margin-bottom:8px;text-transform:uppercase;}
+.rrow{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.rrow.hi{background:var(--blue-lt);border-color:rgba(74,127,193,0.3);}
+.rrow.teal{background:#eaf7f0;border-color:rgba(21,128,61,0.25);}
+.rrow.dim{opacity:0.5;}
 .rmain{font-size:13px;font-weight:600;color:var(--navy);}
 .rsub{font-size:11px;color:var(--gray);margin-top:2px;}
 .rtag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:9px;margin-bottom:3px;display:inline-block;}
 .rtag.ap{background:#dcfce7;color:#15803d;}
-.rtag.pe{background:#fef9c3;color:#854d0e;}
+.rtag.pe{background:#fef3c7;color:#92400e;}
 .rtag.ac{font-size:11px;color:var(--blue-dk);font-weight:700;padding:0;margin-bottom:2px;}
 .rtag.di{font-size:11px;color:var(--red);font-weight:700;padding:0;margin-bottom:2px;}
-.rxcat{font-size:11px;font-weight:700;color:var(--blue-dk);letter-spacing:0.5px;margin-bottom:7px;}
+.rxcat{font-size:11px;font-weight:700;color:var(--blue-dk);letter-spacing:0.5px;margin-bottom:7px;text-transform:uppercase;}
 .rxcat.g{color:var(--gray);}
 
 /* TEAM */
-.thdr{padding:14px 18px 10px;border-bottom:0.5px solid var(--border);flex-shrink:0;}
+.thdr{padding:14px 18px 10px;border-bottom:0.5px solid var(--border);flex-shrink:0;background:var(--white);}
 .thdr-t{font-family:'Georgia',serif;font-size:19px;color:var(--navy);font-weight:700;}
-.slbl{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.8px;padding:8px 18px 4px;text-transform:uppercase;}
-.tcard{border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 16px 8px;background:var(--white);}
-.trole{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.2px;margin-bottom:1px;}
+.slbl{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.8px;padding:10px 18px 4px;text-transform:uppercase;}
+.tcard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 16px 8px;}
+.trole{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.2px;margin-bottom:1px;text-transform:uppercase;}
 .tname{font-size:16px;color:var(--navy);font-weight:600;font-family:'Georgia',serif;margin-bottom:1px;}
 .torg{font-size:11px;color:var(--gray);}
 .tacts{display:flex;gap:5px;margin-top:8px;}
@@ -136,20 +147,20 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
 .bdg{position:absolute;top:-5px;right:-5px;width:14px;height:14px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:white;border:1.5px solid white;}
 
 /* PROFILE */
-.ptop{padding:16px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;position:relative;flex-shrink:0;}
-.pav{width:64px;height:64px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;flex-shrink:0;font-family:'Georgia',serif;}
-.pname{font-family:'Georgia',serif;font-size:24px;font-weight:700;color:var(--blue);}
+.ptop{padding:16px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;position:relative;flex-shrink:0;background:var(--white);}
+.pav{width:64px;height:64px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;flex-shrink:0;font-family:'Georgia',serif;}
+.pname{font-family:'Georgia',serif;font-size:22px;font-weight:700;color:var(--navy);}
 .gear{position:absolute;top:12px;right:12px;width:26px;height:26px;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--cream);}
-.statrow{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:0.5px solid var(--border);}
-.editbtn{border:1px solid var(--blue);border-radius:7px;padding:4px 11px;font-size:11px;color:var(--blue);cursor:pointer;background:white;}
-.psec{padding:12px 16px 0;}
-.psectitle{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.6px;text-transform:uppercase;margin-bottom:8px;}
-.dbox{border:1px solid var(--border);border-radius:11px;padding:12px;background:var(--cream);}
-.drow{font-size:12px;color:var(--navy);line-height:1.65;}
+.statrow{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:0.5px solid var(--border);background:var(--white);}
+.editbtn{border:1.5px solid var(--navy);border-radius:7px;padding:4px 11px;font-size:11px;color:var(--navy);cursor:pointer;background:white;font-weight:600;}
+.psec{padding:12px 16px 0;background:var(--bg);}
+.psectitle{font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:8px;}
+.dbox{border:1px solid var(--border);border-radius:11px;padding:12px;background:var(--white);}
+.drow{font-size:12px;color:var(--navy);line-height:1.7;}
 .drow span{color:var(--gray);}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px;margin-bottom:20px;}
-.qcard{background:var(--cream);border:1px solid var(--border);border-radius:9px;padding:8px 10px;}
-.qlbl{font-size:10px;color:var(--gray);margin-bottom:3px;}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px;margin-bottom:22px;}
+.qcard{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:8px 10px;}
+.qlbl{font-size:10px;color:var(--gray);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.3px;}
 .qtrack{height:4px;background:var(--border);border-radius:2px;margin-bottom:4px;overflow:hidden;}
 .qfill{height:100%;border-radius:2px;}
 .qval{font-size:12px;font-weight:700;color:var(--navy);}
@@ -162,25 +173,22 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <div class="sbar" id="sbar">
     <span class="s-time" id="clock">9:41</span>
     <div style="display:flex;gap:6px;align-items:center;" id="sbar-icons">
-      <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1" fill="#1a2530"/><rect x="4.5" y="2" width="3" height="10" rx="1" fill="#1a2530"/><rect x="9" y="0" width="3" height="12" rx="1" fill="#1a2530"/><rect x="13.5" y="0" width="2.5" height="12" rx="1" fill="#d1d5db"/></svg>
-      <svg width="15" height="11" viewBox="0 0 24 16"><path d="M12 3C8.5 3 5.3 4.4 3 6.7L1 4.7C3.9 1.8 7.8 0 12 0s8.1 1.8 11 4.7L21 6.7C18.7 4.4 15.5 3 12 3z" fill="#1a2530"/><path d="M12 7c-2.2 0-4.2.9-5.7 2.3L4.5 7.5C6.4 5.6 9.1 4.5 12 4.5s5.6 1.1 7.5 3L17.7 9.3C16.2 7.9 14.2 7 12 7z" fill="#1a2530"/><circle cx="12" cy="13" r="2.5" fill="#1a2530"/></svg>
-      <svg width="24" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="22" height="10" rx="3" stroke="#1a2530" stroke-width="1.2" fill="none"/><rect x="22.5" y="3.5" width="2" height="5" rx="1" fill="#1a2530"/><rect x="1.5" y="2.5" width="16" height="7" rx="2" fill="#1a2530"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1" fill="#1B3080"/><rect x="4.5" y="2" width="3" height="10" rx="1" fill="#1B3080"/><rect x="9" y="0" width="3" height="12" rx="1" fill="#1B3080"/><rect x="13.5" y="0" width="2.5" height="12" rx="1" fill="#d1d5db"/></svg>
+      <svg width="15" height="11" viewBox="0 0 24 16"><path d="M12 3C8.5 3 5.3 4.4 3 6.7L1 4.7C3.9 1.8 7.8 0 12 0s8.1 1.8 11 4.7L21 6.7C18.7 4.4 15.5 3 12 3z" fill="#1B3080"/><path d="M12 7c-2.2 0-4.2.9-5.7 2.3L4.5 7.5C6.4 5.6 9.1 4.5 12 4.5s5.6 1.1 7.5 3L17.7 9.3C16.2 7.9 14.2 7 12 7z" fill="#1B3080"/><circle cx="12" cy="13" r="2.5" fill="#1B3080"/></svg>
+      <svg width="24" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="22" height="10" rx="3" stroke="#1B3080" stroke-width="1.2" fill="none"/><rect x="22.5" y="3.5" width="2" height="5" rx="1" fill="#1B3080"/><rect x="1.5" y="2.5" width="16" height="7" rx="2" fill="#1B3080"/></svg>
     </div>
   </div>
 
   <!-- SPLASH -->
-  <div class="screen on" id="s-splash" style="background:var(--teal);flex-direction:column;justify-content:space-between;padding:44px 26px 40px;">
+  <div class="screen on" id="s-splash" style="background:var(--navy);flex-direction:column;justify-content:space-between;padding:44px 26px 40px;">
     <div>
-      <div style="width:52px;height:52px;background:rgba(255,255,255,0.18);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3 6 3 11c0 3.5 1.9 6.6 4.8 8.3L9 21h6l1.2-1.7C19.1 17.6 21 14.5 21 11c0-5-4-9-9-9z" fill="rgba(255,255,255,0.9)"/><path d="M9 11h6M12 8v6" stroke="#1A7B6E" stroke-width="2" stroke-linecap="round"/></svg>
+      <div style="margin-bottom:24px;">
+        <div style="font-family:'Georgia',serif;font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">Synapticure</div>
+        <p style="font-family:'Georgia',serif;font-size:32px;font-weight:700;color:white;line-height:1.15;margin-bottom:14px;">Virtual specialty care for neurodegenerative diseases</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:1.2px;text-transform:uppercase;">Cognitive · Movement · Muscular · Neuroimmune</p>
       </div>
-      <p style="font-family:'Georgia',serif;font-size:30px;font-weight:700;color:white;line-height:1.18;margin-bottom:12px;">Expert Neurology Care, Made Simple</p>
-      <p style="font-size:13px;color:rgba(255,255,255,0.78);line-height:1.65;margin-bottom:22px;">Virtual care for ALS, Alzheimer's, Parkinson's and more. Covered by insurance. Available in all 50 states.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:7px;">
-        <span style="background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,0.88);">All 50 states</span>
-        <span style="background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,0.88);">Insurance covered</span>
-        <span style="background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,0.88);">24/7 care team</span>
-      </div>
+      <div style="width:48px;height:2px;background:rgba(255,255,255,0.25);margin-bottom:24px;"></div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">Covered by insurance. Available in all 50 states. Expert neurologists via video visit.</p>
     </div>
     <div>
       <button class="ob-btn white" style="margin-bottom:10px;" onclick="go('s-signup')">Get Started</button>
@@ -191,14 +199,17 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <!-- SIGN UP -->
   <div class="screen" id="s-signup">
     <div class="ob">
-      <div class="ob-logo"><div class="ob-mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3 6 3 11c0 3.5 1.9 6.6 4.8 8.3L9 21h6l1.2-1.7C19.1 17.6 21 14.5 21 11c0-5-4-9-9-9z" fill="rgba(255,255,255,0.9)"/><path d="M9 11h6M12 8v6" stroke="#1A7B6E" stroke-width="2" stroke-linecap="round"/></svg></div><span class="ob-txt">Synapticure</span></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:26px;">
+        <div class="ob-mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3 6 3 11c0 3.5 1.9 6.6 4.8 8.3L9 21h6l1.2-1.7C19.1 17.6 21 14.5 21 11c0-5-4-9-9-9z" fill="rgba(255,255,255,0.9)"/><path d="M9 11h6M12 8v6" stroke="#1B3080" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <span class="ob-txt">Synapticure</span>
+      </div>
       <div class="ob-prog"><div class="ob-pip done"></div><div class="ob-pip"></div><div class="ob-pip"></div></div>
       <h1 class="ob-h">Create your account</h1>
       <p class="ob-sub">We'll build your personalized care plan based on your information.</p>
       <label class="ob-lbl">First name</label>
       <input class="ob-field" type="text" placeholder="Lee Majors">
       <label class="ob-lbl">Email address</label>
-      <input class="ob-field" type="email" placeholder="brian@example.com">
+      <input class="ob-field" type="email" placeholder="lee@example.com">
       <label class="ob-lbl">Password</label>
       <input class="ob-field" type="password" placeholder="••••••••">
       <button class="ob-btn" onclick="go('s-condition')">Continue</button>
@@ -209,25 +220,25 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <!-- CONDITION -->
   <div class="screen" id="s-condition">
     <div class="ob">
-      <div class="ob-back" onclick="go('s-signup')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Back</div>
+      <div class="ob-back" onclick="go('s-signup')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back</div>
       <div class="ob-prog"><div class="ob-pip done"></div><div class="ob-pip done"></div><div class="ob-pip"></div></div>
       <h1 class="ob-h">What brings you to Synapticure?</h1>
       <p class="ob-sub">Select the condition you or your loved one is managing.</p>
       <div class="cond-grid">
         <div class="cond-opt sel" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a9 9 0 100 18A9 9 0 0012 2z" stroke="#1A7B6E" stroke-width="1.8"/><path d="M8 12h8M12 8v8" stroke="#1A7B6E" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a9 9 0 100 18A9 9 0 0012 2z" stroke="#1B3080" stroke-width="1.8"/><path d="M8 12h8M12 8v8" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           <div class="cond-name">ALS &amp; Motor Neuron</div>
         </div>
         <div class="cond-opt" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="10" rx="7" ry="6" stroke="#1A7B6E" stroke-width="1.8"/><path d="M8 16c0 2.2 1.8 4 4 4s4-1.8 4-4" stroke="#1A7B6E" stroke-width="1.8"/></svg></div>
+          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="10" rx="7" ry="6" stroke="#1B3080" stroke-width="1.8"/><path d="M8 16c0 2.2 1.8 4 4 4s4-1.8 4-4" stroke="#1B3080" stroke-width="1.8"/></svg></div>
           <div class="cond-name">Alzheimer's &amp; Dementia</div>
         </div>
         <div class="cond-opt" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#1A7B6E" stroke-width="1.8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="#1A7B6E" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#1B3080" stroke-width="1.8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           <div class="cond-name">Parkinson's &amp; Movement</div>
         </div>
         <div class="cond-opt" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#1A7B6E" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#1A7B6E" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#1A7B6E" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#1B3080" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           <div class="cond-name">I'm a Caregiver</div>
         </div>
       </div>
@@ -238,7 +249,7 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <!-- INSURANCE -->
   <div class="screen" id="s-insurance">
     <div class="ob">
-      <div class="ob-back" onclick="go('s-condition')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Back</div>
+      <div class="ob-back" onclick="go('s-condition')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back</div>
       <div class="ob-prog"><div class="ob-pip done"></div><div class="ob-pip done"></div><div class="ob-pip done"></div></div>
       <h1 class="ob-h">What's your insurance?</h1>
       <p class="ob-sub">We accept most major plans. This helps us confirm your coverage before the first visit.</p>
@@ -273,16 +284,16 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <div class="screen" id="s-journey">
     <div class="jhdr">
       <div class="jrow">
-        <div><div class="jgreet">Good morning,</div><div class="jname">Lee Majors</div></div>
+        <div><div class="jgreet">Good morning</div><div class="jname">Lee Majors</div></div>
         <div class="notif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg><div class="ndot"></div></div>
       </div>
       <div class="appt" onclick="go('s-team')">
-        <div class="abadge">UPCOMING VISIT</div>
+        <div class="abadge">Upcoming Visit</div>
         <div class="atitle">Video Visit — Neurology with Dr. Doe</div>
         <div class="ameta"><span>Thu Apr 17 · 2:00 PM EST</span><button class="ajoin" onclick="event.stopPropagation()">Join</button></div>
       </div>
     </div>
-    <div class="scroll">
+    <div class="scroll" style="background:var(--bg);">
       <div class="dsec">
         <p class="dtitle">My Care</p>
         <div class="cgrid">
@@ -293,19 +304,19 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
           <div class="ncard" onclick="go('s-treatments')">
-            <div class="nicon" style="background:#fef3c7;"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#d97706" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+            <div class="nicon" style="background:#fef3c7;"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#b45309" stroke-width="2.2" stroke-linecap="round"/></svg></div>
             <div class="nlabel">Treatments</div>
             <div class="nmeta">Radicava Day 10</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
           <div class="ncard" onclick="go('s-team')">
-            <div class="nicon" style="background:var(--teal-lt);"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C9.8 2 8 3.8 8 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#1A7B6E" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="nicon" style="background:var(--navy-lt);"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C9.8 2 8 3.8 8 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
             <div class="nlabel">Team</div>
             <div class="nmeta">6 members · 3 msgs</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
           <div class="ncard" onclick="go('s-profile')">
-            <div class="nicon" style="background:#fce7f3;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#be185d" stroke-width="1.8"/><circle cx="12" cy="9" r="3" stroke="#be185d" stroke-width="1.8"/><path d="M6 20c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#be185d" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="nicon" style="background:#f0e8ff;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#7c3aed" stroke-width="1.8"/><circle cx="12" cy="9" r="3" stroke="#7c3aed" stroke-width="1.8"/><path d="M6 20c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round"/></svg></div>
             <div class="nlabel">Profile</div>
             <div class="nmeta">QoL avg · 6.3/10</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
@@ -315,22 +326,22 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
       <div class="dsec">
         <p class="dtitle">To-Do</p>
         <div class="todos">
-          <div class="todo" onclick="go('s-treatments')"><div class="tdot" style="background:var(--red);"></div><div style="flex:1;"><div class="ttext">Radicava infusion today — Day 10 of 60</div><div class="tcat">TREATMENTS</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="todo" onclick="go('s-tests')"><div class="tdot" style="background:var(--amber);"></div><div style="flex:1;"><div class="ttext">Neurofilament results ready to review</div><div class="tcat">TESTS</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="todo" onclick="go('s-team')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Reply to Melissa Smith — Care Navigator</div><div class="tcat">TEAM</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="todo" onclick="go('s-treatments')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Refill Gabapentin — pharmacy due Apr 20</div><div class="tcat">TREATMENTS</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="todo" onclick="go('s-tests')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Mini-Brain screening Wave 6 — schedule Dr. Waller</div><div class="tcat">TESTS</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="todo" onclick="go('s-treatments')"><div class="tdot" style="background:#e55353;"></div><div style="flex:1;"><div class="ttext">Radicava infusion today — Day 10 of 60</div><div class="tcat">Treatments</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="todo" onclick="go('s-tests')"><div class="tdot" style="background:#f59e0b;"></div><div style="flex:1;"><div class="ttext">Neurofilament results ready to review</div><div class="tcat">Tests</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="todo" onclick="go('s-team')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Reply to Melissa Smith — Care Navigator</div><div class="tcat">Team</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="todo" onclick="go('s-treatments')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Refill Gabapentin — pharmacy due Apr 20</div><div class="tcat">Treatments</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="todo" onclick="go('s-tests')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Mini-Brain screening Wave 6 — schedule Dr. Waller</div><div class="tcat">Tests</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         </div>
       </div>
       <div class="dsec" style="padding-bottom:20px;">
         <p class="dtitle">Discovery</p>
-        <div style="background:var(--blue-lt);border:1px solid rgba(74,127,193,0.2);border-radius:13px;padding:13px 14px;margin-bottom:9px;cursor:pointer;" onclick="go('s-treatments')">
-          <div style="font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.5px;margin-bottom:3px;">NEW TRIAL MATCH</div>
-          <div style="font-family:'Georgia',serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;">Stathmin-2 ASO + TBK1 ASO</div>
-          <div style="font-size:11px;color:var(--gray);">Clinical trial — matches your TBK1 mutation</div>
+        <div style="background:var(--blue-lt);border:1px solid rgba(74,127,193,0.25);border-radius:12px;padding:13px 14px;margin-bottom:9px;cursor:pointer;" onclick="go('s-treatments')">
+          <div style="font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.6px;margin-bottom:3px;text-transform:uppercase;">New Trial Match</div>
+          <div style="font-family:'Georgia',serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;">TDP43 ASO</div>
+          <div style="font-size:11px;color:var(--gray);">Targeted therapy — matches your TDP43 mutation</div>
         </div>
-        <div style="background:var(--teal-lt);border:1px solid rgba(26,123,110,0.18);border-radius:13px;padding:13px 14px;cursor:pointer;" onclick="go('s-treatments')">
-          <div style="font-size:10px;font-weight:700;color:var(--teal-dk);letter-spacing:0.5px;margin-bottom:3px;">SUPPORT TECH</div>
+        <div style="background:var(--navy-lt);border:1px solid rgba(27,48,128,0.15);border-radius:12px;padding:13px 14px;cursor:pointer;" onclick="go('s-treatments')">
+          <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.6px;margin-bottom:3px;text-transform:uppercase;">Support Tech</div>
           <div style="font-family:'Georgia',serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;">Voice Banking — recommended</div>
           <div style="font-size:11px;color:var(--gray);">Preserve your voice with ModelTalker</div>
         </div>
@@ -345,8 +356,8 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
     <div class="fbar"><span class="fp a">All</span><span class="fp i">Cure Search</span><span class="fp i">Supportive</span><span class="fp i">Prognosis</span><span class="fp i">Diagnosis</span></div>
     <div class="scroll"><div class="rlist">
       <div class="ylbl">2020</div>
-      <div class="rrow hi"><div><span class="rtag pe">FDA Review Pending</span><div class="rmain">Stathmin-2 ASO + TBK1 ASO</div><div class="rsub">Thomas Waller, MD · 10/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="rrow teal"><div><span class="rtag ap">FDA Approved</span><div class="rmain">Stathmin-2 ASO</div><div class="rsub">Bob Brown, UMass · Merit Berry, MD · 09/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="rrow hi"><div><span class="rtag pe">In Development</span><div class="rmain">TDP43 ASO</div><div class="rsub">Thomas Waller, MD · 10/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="rrow hi"><div><span class="rtag pe">In Development</span><div class="rmain">Excitotoxicity — Glutamate Modulation</div><div class="rsub">Merit Berry, MD · 09/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">Diagnosis: ALS</div><div class="rsub">Louise England, NP · 07/14/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">Neurofilament (Prognostic)</div><div class="rsub">Merit Berry, MD · 05/04/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">My Mini-Brain Treatment Screening</div><div class="rsub">Tommy Waller, MD · Wave 5 · 03/12/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
@@ -362,12 +373,12 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <!-- TREATMENTS -->
   <div class="screen" id="s-treatments">
     <div class="shdr"><p class="shdr-t">Treatments</p><p class="shdr-s">Search by date, doctor, or Rx type</p></div>
-    <div class="fbar"><span class="fp a">All</span><span class="fp i">Cure Trials</span><span class="fp i">Supportive</span></div>
+    <div class="fbar"><span class="fp a">All</span><span class="fp i">Targeted</span><span class="fp i">Supportive</span></div>
     <div class="scroll"><div class="rlist">
-      <div class="rxcat">PERSONALIZED CURE TRIALS</div>
-      <div class="rrow hi"><div><span class="rtag pe">FDA Review Pending</span><div class="rmain">Stathmin-2 ASO + TBK1 ASO</div><div class="rsub">Thomas Waller, MD · Merit Berry, MD · 10/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="rrow teal" style="margin-bottom:12px;"><div><span class="rtag ap">FDA Approved</span><div class="rmain">Stathmin-2 ASO</div><div class="rsub">Bob Brown, UMass · Merit Berry, MD · 09/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="rxcat g">SUPPORTIVE CARE</div>
+      <div class="rxcat">Targeted Treatments</div>
+      <div class="rrow hi"><div><span class="rtag pe">In Development</span><div class="rmain">TDP43 ASO</div><div class="rsub">Thomas Waller, MD · Merit Berry, MD · 10/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="rrow hi" style="margin-bottom:12px;"><div><span class="rtag pe">In Development</span><div class="rmain">Excitotoxicity — Glutamate Modulation</div><div class="rsub">Merit Berry, MD · 09/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="rxcat g">Supportive Care</div>
       <div class="rrow"><div><div class="rtag ac">Day 10 of 60 — IV Infusion</div><div class="rmain">Radicava (edaravone)</div><div class="rsub">Hayim Waller, RN · Merit Berry, MD · 12/04/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">Gabapentin 300mg 3x daily</div><div class="rsub">Peter Doe, MD · For Fasciculations · 11/17/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">Speech Therapy</div><div class="rsub">Rosetta Stone, CCC-SLP · 11/17/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
@@ -379,45 +390,53 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
   <!-- TEAM -->
   <div class="screen" id="s-team">
     <div class="thdr"><p class="thdr-t">My Care Team</p></div>
-    <div class="scroll" style="padding-top:8px;">
-      <div class="tcard"><div class="trole">Care Navigator</div><div class="tname">Melissa Smith</div><div class="torg">Synapticure — Austin, TX</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email<div class="bdg">1</div></div><div class="ab c" style="position:relative;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg><div class="bdg">2</div></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
-      <div class="tcard"><div class="trole">Local Neurologist</div><div class="tname">Peter Doe, MD</div><div class="torg">Northwestern — Chicago, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email<div class="bdg">1</div></div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
-      <div class="tcard"><div class="trole">Consulting Neurologist</div><div class="tname">Merit Berry, MD</div><div class="torg">MGH — Boston, MA</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
-      <div class="tcard"><div class="trole">Primary Care Provider</div><div class="tname">Louise England, NP</div><div class="torg">Davis &amp; Rossman — Kenilworth, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
-      <div class="tcard"><div class="trole">Home Care Nurse</div><div class="tname">Hayim Waller, RN</div><div class="torg">Landmark Health — Chicago, IL</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
-      <div class="tcard"><div class="trole">Insurance Coordinator</div><div class="tname">Barry White</div><div class="torg">United Healthcare — Minneapolis, MN</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+    <div class="scroll" style="background:var(--bg);padding-top:8px;">
+      <div class="tcard"><div class="trole">Care Navigator</div><div class="tname">Melissa Smith</div><div class="torg">Synapticure — Austin, TX</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email<div class="bdg">1</div></div><div class="ab c" style="position:relative;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg><div class="bdg">2</div></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+      <div class="tcard"><div class="trole">Local Neurologist</div><div class="tname">Peter Doe, MD</div><div class="torg">Northwestern — Chicago, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email<div class="bdg">1</div></div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+      <div class="tcard"><div class="trole">Consulting Neurologist</div><div class="tname">Merit Berry, MD</div><div class="torg">MGH — Boston, MA</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+      <div class="tcard"><div class="trole">Primary Care Provider</div><div class="tname">Louise England, NP</div><div class="torg">Davis &amp; Rossman — Kenilworth, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+      <div class="tcard"><div class="trole">Home Care Nurse</div><div class="tname">Hayim Waller, RN</div><div class="torg">Landmark Health — Chicago, IL</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+      <div class="tcard"><div class="trole">Insurance Coordinator</div><div class="tname">Barry White</div><div class="torg">United Healthcare — Minneapolis, MN</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
       <div class="slbl">Family</div>
-      <div class="tcard" style="margin-bottom:18px;"><div class="trole">Partner</div><div class="tname">Sand Ra</div><div class="torg">Kenilworth, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#6b7280" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#6b7280" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
+      <div class="tcard" style="margin-bottom:18px;"><div class="trole">Partner</div><div class="tname">The Incredible Woman</div><div class="torg">Kenilworth, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
     </div>
     <div class="bnav" id="bn-team"></div>
   </div>
 
   <!-- PROFILE -->
   <div class="screen" id="s-profile">
-    <div class="scroll">
+    <div class="scroll" style="background:var(--bg);">
       <div class="ptop">
-        <div class="pav">LM</div><div class="pname">Lee Majors</div>
-        <div class="gear"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#6b7280" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#6b7280" stroke-width="1.8"/></svg></div>
+        <div class="pav">LM</div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:2px;">Patient</div>
+          <div class="pname">Lee Majors</div>
+        </div>
+        <div class="gear"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#5a6478" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#5a6478" stroke-width="1.8"/></svg></div>
       </div>
-      <div class="statrow"><span style="font-size:12px;color:var(--navy);">39 years old, 5 ft 11, 155 lb. <span style="font-size:11px;color:var(--gray);">(165 lb. 3m ago)</span></span><button class="editbtn">edit</button></div>
-      <div class="psec">
+      <div class="statrow">
+        <span style="font-size:12px;color:var(--navy);">39 years old, 5 ft 11, 155 lb. <span style="font-size:11px;color:var(--gray);">(165 lb. 3m ago)</span></span>
+        <button class="editbtn">edit</button>
+      </div>
+      <div class="psec" style="padding-top:14px;">
+        <div class="psectitle">Diagnosis</div>
         <div class="dbox">
-          <div class="drow"><span>Diagnosis: </span>ALS — Amyotrophic lateral sclerosis</div>
+          <div class="drow"><span>Condition: </span>ALS — Amyotrophic lateral sclerosis</div>
           <div class="drow" style="margin-top:4px;"><span>Type: </span>Sporadic, TDP-43 proteinopathy (lab confirmed)</div>
           <div class="drow" style="margin-top:4px;"><span>Known Mutations: </span>TBK1, TDP43</div>
           <div class="drow" style="margin-top:4px;"><span>Possible Triggers: </span>Mononucleosis 1997, Mercury poisoning 2018</div>
           <div class="drow" style="margin-top:4px;"><span>Prognosis: </span>Neurofilament pending — Imaging, EMG</div>
         </div>
       </div>
-      <div class="psec" style="padding-bottom:22px;">
-        <div class="psectitle" style="margin-top:12px;">Quality of Life</div>
+      <div class="psec" style="padding-bottom:24px;">
+        <div class="psectitle" style="margin-top:14px;">Quality of Life</div>
         <div class="qgrid">
           <div class="qcard"><div class="qlbl">Typing</div><div class="qtrack"><div class="qfill" style="width:70%;background:var(--blue);"></div></div><div class="qval">7<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
-          <div class="qcard"><div class="qlbl">Walking</div><div class="qtrack"><div class="qfill" style="width:40%;background:var(--red);"></div></div><div class="qval">4<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
-          <div class="qcard"><div class="qlbl">Gripping</div><div class="qtrack"><div class="qfill" style="width:50%;background:var(--amber);"></div></div><div class="qval">5<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
+          <div class="qcard"><div class="qlbl">Walking</div><div class="qtrack"><div class="qfill" style="width:40%;background:#e55353;"></div></div><div class="qval">4<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
+          <div class="qcard"><div class="qlbl">Gripping</div><div class="qtrack"><div class="qfill" style="width:50%;background:#f59e0b;"></div></div><div class="qval">5<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
           <div class="qcard"><div class="qlbl">Eating</div><div class="qtrack"><div class="qfill" style="width:80%;background:var(--blue);"></div></div><div class="qval">8<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
-          <div class="qcard"><div class="qlbl">Speaking</div><div class="qtrack"><div class="qfill" style="width:50%;background:var(--amber);"></div></div><div class="qval">5<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
-          <div class="qcard"><div class="qlbl">Breathing</div><div class="qtrack"><div class="qfill" style="width:90%;background:var(--green);"></div></div><div class="qval">9<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
+          <div class="qcard"><div class="qlbl">Speaking</div><div class="qtrack"><div class="qfill" style="width:50%;background:#f59e0b;"></div></div><div class="qval">5<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
+          <div class="qcard"><div class="qlbl">Breathing</div><div class="qtrack"><div class="qfill" style="width:90%;background:#15803d;"></div></div><div class="qval">9<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
         </div>
       </div>
     </div>
@@ -428,7 +447,6 @@ body{background:#e8ebe8;min-height:100vh;display:flex;justify-content:center;ali
 </div>
 
 <script>
-// NAV ITEMS
 const TABS = [
   {id:'journey', lbl:'Journey', svg:'<svg width="22" height="20" viewBox="0 0 26 22" fill="none"><polygon points="2,13 13,3 24,13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 11v9a1 1 0 001 1h4v-5h6v5h4a1 1 0 001-1v-9" stroke-width="1.9" stroke-linecap="round" fill="none"/></svg>'},
   {id:'tests',   lbl:'Tests',   svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.8"/><path d="M3 9h18M9 21V9" stroke-width="1.8"/></svg>'},
@@ -440,8 +458,8 @@ const TABS = [
 function buildNav(activeId) {
   return TABS.map(t => {
     const on = t.id === activeId;
-    const c = on ? '#4a7fc1' : '#9ca3af';
-    const svg = t.svg.replace(/stroke-width/g, `stroke="${c}" stroke-width`).replace(/<svg /, `<svg style="color:${c}" `);
+    const c = on ? '#1B3080' : '#9ca3af';
+    const svg = t.svg.replace(/stroke-width/g, `stroke="${c}" stroke-width`);
     return `<div class="ni${on?' on':''}" onclick="go('s-${t.id}')">
       <div style="width:26px;height:22px;display:flex;align-items:center;justify-content:center;">${svg}</div>
       <span class="lbl">${t.lbl}</span>
@@ -454,30 +472,16 @@ function buildNav(activeId) {
   if (el) el.innerHTML = buildNav(id);
 });
 
-const OB = ['s-splash','s-signup','s-condition','s-insurance','s-welcome'];
-
 function go(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   const sb = document.getElementById('sbar');
-  const icons = document.getElementById('sbar-icons');
   if (id === 's-splash') {
-    sb.style.background = 'var(--teal)';
+    sb.style.background = '#1B3080';
     document.getElementById('clock').style.color = 'white';
-    icons.querySelectorAll('svg path,svg rect,svg circle,svg ellipse').forEach(e => {
-      if (e.getAttribute('fill') && e.getAttribute('fill') !== 'none') e.setAttribute('fill','rgba(255,255,255,0.85)');
-      if (e.getAttribute('stroke') && e.getAttribute('stroke') !== 'none') e.setAttribute('stroke','rgba(255,255,255,0.85)');
-    });
   } else {
-    sb.style.background = 'var(--white)';
+    sb.style.background = 'white';
     document.getElementById('clock').style.color = '';
-    icons.querySelectorAll('svg path,svg rect,svg circle,svg ellipse').forEach(e => {
-      if (e.getAttribute('fill') && e.getAttribute('fill') !== 'none') e.setAttribute('fill','#1a2530');
-      if (e.getAttribute('stroke') && e.getAttribute('stroke') !== 'none') e.setAttribute('stroke','rgba(0,0,0,0)');
-    });
-    // restore last svg rect fills
-    icons.querySelectorAll('svg rect').forEach(e => e.setAttribute('fill','#1a2530'));
-    icons.querySelectorAll('svg circle').forEach(e => e.setAttribute('fill','#1a2530'));
   }
 }
 
