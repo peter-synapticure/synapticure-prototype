@@ -8,57 +8,97 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:40px 20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
 :root{
-  /* Deck palette */
-  --navy:#1B3080;       /* primary — dark blue from deck headings */
-  --navy-dk:#12205a;    /* deeper navy */
-  --navy-lt:#eef1f9;    /* very light navy tint */
-  --blue:#4a7fc1;       /* cornflower — deck table headers */
-  --blue-lt:#dde8f7;    /* light blue — deck alternating rows */
-  --blue-dk:#2c5f9e;
-  --blue-mid:#5b8fd9;
-  --bg:#f2f5fb;         /* page background — light blue-gray */
-  --white:#ffffff;
-  --navy-text:#1B3080;
-  --gray:#5a6478;
-  --gray-lt:#e8ecf3;
-  --border:#d0d9ec;
-  --cream:#f7f9fd;
-  --red:#c0392b;        /* used sparingly like deck */
-  --amber:#b45309;
-  --green:#15803d;
+  --navy:#1B3080;--navy-dk:#12205a;--navy-lt:#eef1f9;
+  --blue:#4a7fc1;--blue-lt:#dde8f7;--blue-dk:#2c5f9e;
+  --bg:#f2f5fb;--white:#fff;--gray:#5a6478;--gray-lt:#e8ecf3;
+  --border:#d0d9ec;--cream:#f7f9fd;
+  --red:#c0392b;--amber:#b45309;--green:#15803d;
+  --gold:#b45309;
 }
 .phone{width:375px;height:780px;background:var(--white);border-radius:44px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 0 12px #1a1a2e,0 0 0 14px #22223b,0 0 60px rgba(0,0,0,0.45);}
-.sbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0;background:var(--white);}
+.sbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0;transition:background 0.2s;}
 .s-time{font-size:15px;font-weight:600;color:var(--navy);font-family:'Georgia',serif;}
 .screen{display:none;flex:1;flex-direction:column;overflow:hidden;}
 .screen.on{display:flex;}
 .scroll{flex:1;overflow-y:auto;scrollbar-width:none;}
 .scroll::-webkit-scrollbar{display:none;}
 
-/* NAV */
+/* ── BOTTOM NAV ── */
 .bnav{height:80px;background:var(--white);border-top:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding-bottom:14px;flex-shrink:0;}
 .ni{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:5px 8px;}
 .ni .lbl{font-size:10px;color:var(--gray);}
 .ni.on .lbl{color:var(--navy);}
 
-/* ONBOARDING */
-.ob{flex:1;display:flex;flex-direction:column;padding:28px 26px 24px;overflow-y:auto;background:var(--bg);}
-.ob-mark{width:34px;height:34px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;}
-.ob-txt{font-family:'Georgia',serif;font-size:19px;font-weight:700;color:var(--navy);}
-.ob-prog{display:flex;gap:5px;margin-bottom:26px;}
+/* ── SHARED ONBOARDING ── */
+.ob{flex:1;display:flex;flex-direction:column;padding:24px 24px 22px;overflow-y:auto;background:var(--bg);}
+.ob-mark{width:32px;height:32px;background:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.ob-txt{font-family:'Georgia',serif;font-size:18px;font-weight:700;color:var(--navy);}
+.ob-prog{display:flex;gap:4px;margin-bottom:24px;}
 .ob-pip{height:3px;border-radius:2px;flex:1;background:var(--border);}
 .ob-pip.done{background:var(--navy);}
-.ob-h{font-family:'Georgia',serif;font-size:26px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;}
-.ob-sub{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:26px;}
-.ob-lbl{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.4px;margin-bottom:5px;display:block;text-transform:uppercase;}
+.ob-h{font-family:'Georgia',serif;font-size:24px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:8px;}
+.ob-sub{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:22px;}
+.ob-lbl{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.5px;margin-bottom:5px;display:block;text-transform:uppercase;}
 .ob-field{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:13px 14px;font-size:15px;color:var(--navy);outline:none;background:var(--white);margin-bottom:12px;}
 .ob-field:focus{border-color:var(--navy);}
 .ob-btn{background:var(--navy);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:10px;letter-spacing:0.2px;}
 .ob-btn.ghost{background:transparent;color:rgba(255,255,255,0.85);border:1.5px solid rgba(255,255,255,0.35);}
 .ob-btn.white{background:white;color:var(--navy);}
+.ob-btn.outline{background:white;color:var(--navy);border:1.5px solid var(--navy);}
 .ob-link{font-size:12px;color:var(--gray);text-align:center;margin-top:14px;}
 .ob-link span{color:var(--navy);font-weight:700;cursor:pointer;}
-.ob-back{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--gray);cursor:pointer;margin-bottom:20px;}
+.ob-back{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--gray);cursor:pointer;margin-bottom:18px;}
+
+/* ── ZEBRA FUNNEL SHARED ── */
+.zscreen{flex:1;display:flex;flex-direction:column;background:var(--navy);}
+.zscreen.light{background:var(--bg);}
+.ztop{padding:20px 24px 0;flex-shrink:0;}
+.zprog{display:flex;gap:4px;margin-bottom:20px;}
+.zpip{height:3px;border-radius:2px;flex:1;background:rgba(255,255,255,0.2);}
+.zpip.light{background:var(--border);}
+.zpip.done{background:white;}
+.zpip.done.light{background:var(--navy);}
+.zback{display:flex;align-items:center;gap:5px;font-size:13px;color:rgba(255,255,255,0.65);cursor:pointer;margin-bottom:22px;}
+.zback.dark-bg{color:var(--gray);}
+.zh{font-family:'Georgia',serif;font-size:26px;font-weight:700;color:white;line-height:1.2;margin-bottom:8px;}
+.zh.light{color:var(--navy);}
+.zsub{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:0;}
+.zsub.light{color:var(--gray);}
+.zcontent{flex:1;padding:22px 24px 24px;display:flex;flex-direction:column;justify-content:space-between;}
+/* choice pills */
+.zchoices{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.zchoice{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:14px;padding:16px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background 0.15s,border-color 0.15s;}
+.zchoice.light{background:var(--white);border-color:var(--border);}
+.zchoice.sel{background:rgba(255,255,255,0.2);border-color:white;}
+.zchoice.sel.light{background:var(--navy-lt);border-color:var(--navy);}
+.zchoice-txt{font-size:15px;font-weight:600;color:white;line-height:1.3;}
+.zchoice-txt.light{color:var(--navy);}
+.zchoice-sub{font-size:11px;color:rgba(255,255,255,0.55);margin-top:2px;}
+.zchoice-sub.light{color:var(--gray);}
+.zchoice-check{width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.zchoice-check.light{border-color:var(--border);}
+.zchoice.sel .zchoice-check{background:white;border-color:white;}
+.zchoice.sel.light .zchoice-check{background:var(--navy);border-color:var(--navy);}
+/* multi select chips */
+.zchips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px;}
+.zchip{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:30px;padding:10px 16px;cursor:pointer;font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);}
+.zchip.sel{background:white;color:var(--navy);border-color:white;}
+/* continue btn */
+.zcta{background:white;color:var(--navy);border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;width:100%;}
+.zcta.light{background:var(--navy);color:white;}
+.zcta.disabled{opacity:0.35;pointer-events:none;}
+
+/* ── RESULT CARDS ── */
+.result-card{background:white;border-radius:16px;padding:18px;margin-bottom:12px;}
+.result-match{background:var(--navy-lt);border:1px solid rgba(27,48,128,0.18);border-radius:14px;padding:16px;margin-bottom:10px;}
+.result-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+.result-tag.strong{background:#dcfce7;color:#15803d;}
+.result-tag.possible{background:#fef3c7;color:#92400e;}
+.result-name{font-family:'Georgia',serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.result-detail{font-size:12px;color:var(--gray);line-height:1.55;}
+.result-why{font-size:11px;font-weight:700;color:var(--blue-dk);margin-top:8px;}
+
+/* ── CONDITION SELECT ── */
 .cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px;}
 .cond-opt{border:1.5px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;background:var(--white);}
 .cond-opt.sel{border-color:var(--navy);background:var(--navy-lt);}
@@ -72,53 +112,58 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
 .ins-chk{width:19px;height:19px;border-radius:50%;border:1.5px solid var(--border);}
 .ins-opt.sel .ins-chk{background:var(--navy);border-color:var(--navy);display:flex;align-items:center;justify-content:center;}
 
-/* WELCOME */
+/* ── WELCOME ── */
 .welbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;background:var(--bg);}
 .welcircle{width:80px;height:80px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
 .welh{font-family:'Georgia',serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:10px;}
 .welpills{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:0 0 28px;}
 .wpill{background:var(--navy-lt);border:1px solid rgba(27,48,128,0.18);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--navy);font-weight:600;}
 
-/* JOURNEY HEADER */
+/* ── JOURNEY ── */
 .jhdr{background:var(--navy);padding:18px 18px 20px;}
 .jrow{display:flex;align-items:center;justify-content:space-between;}
-.jgreet{font-size:12px;color:rgba(255,255,255,0.65);margin-bottom:3px;letter-spacing:0.3px;text-transform:uppercase;}
+.jgreet{font-size:11px;color:rgba(255,255,255,0.55);margin-bottom:3px;letter-spacing:0.5px;text-transform:uppercase;}
 .jname{font-family:'Georgia',serif;font-size:21px;font-weight:700;color:white;}
 .notif{width:32px;height:32px;background:rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;}
 .ndot{position:absolute;top:5px;right:5px;width:7px;height:7px;background:#e55353;border-radius:50%;border:1.5px solid var(--navy);}
 .appt{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:12px 14px;margin-top:14px;cursor:pointer;}
-.abadge{font-size:10px;font-weight:700;color:rgba(255,255,255,0.55);letter-spacing:0.8px;margin-bottom:4px;text-transform:uppercase;}
+.abadge{font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px;}
 .atitle{font-family:'Georgia',serif;font-size:14px;color:white;margin-bottom:3px;}
-.ameta{font-size:11px;color:rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:space-between;}
+.ameta{font-size:11px;color:rgba(255,255,255,0.55);display:flex;align-items:center;justify-content:space-between;}
 .ajoin{background:white;color:var(--navy);border:none;border-radius:7px;padding:4px 11px;font-size:11px;font-weight:700;cursor:pointer;}
-
-/* DASHBOARD */
-.dsec{padding:16px 16px 0;}
-.dtitle{font-family:'Georgia',serif;font-size:16px;color:var(--navy);font-weight:700;margin-bottom:10px;}
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
-.ncard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;}
-.nicon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
-.nicon svg{width:17px;height:17px;}
+.dsec{padding:14px 14px 0;}
+.dtitle{font-family:'Georgia',serif;font-size:15px;color:var(--navy);font-weight:700;margin-bottom:9px;}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.ncard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:11px;cursor:pointer;}
+.nicon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.nicon svg{width:16px;height:16px;}
 .nlabel{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px;}
-.nmeta{font-size:11px;color:var(--gray);line-height:1.35;}
-.nchev{display:flex;justify-content:flex-end;margin-top:6px;}
-.todos{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
-.todo{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:11px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;}
-.tdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.nmeta{font-size:11px;color:var(--gray);}
+.nchev{display:flex;justify-content:flex-end;margin-top:5px;}
+/* Research wide card */
+.research-card{background:var(--navy);border-radius:14px;padding:16px 18px;margin:0 14px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+.rc-left{}
+.rc-eyebrow{font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px;}
+.rc-title{font-family:'Georgia',serif;font-size:15px;font-weight:700;color:white;margin-bottom:3px;}
+.rc-sub{font-size:11px;color:rgba(255,255,255,0.6);}
+.rc-icon{width:40px;height:40px;background:rgba(255,255,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.todos{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.todo{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 11px;display:flex;align-items:center;gap:9px;cursor:pointer;}
+.tdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 .ttext{font-size:12px;color:var(--navy);flex:1;}
-.tcat{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.4px;text-transform:uppercase;}
+.tcat{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.3px;text-transform:uppercase;}
 
-/* SCREENS */
+/* ── SCREENS (tests/treatments/team/profile) ── */
 .shdr{background:var(--navy);padding:16px 18px 20px;flex-shrink:0;}
 .shdr-t{font-family:'Georgia',serif;font-size:19px;color:white;font-weight:700;}
 .shdr-s{font-size:12px;color:rgba(255,255,255,0.6);margin-top:3px;}
-.fbar{padding:9px 14px;display:flex;gap:6px;overflow-x:auto;border-bottom:0.5px solid var(--border);flex-shrink:0;scrollbar-width:none;background:var(--bg);}
+.fbar{padding:9px 14px;display:flex;gap:6px;overflow-x:auto;border-bottom:0.5px solid var(--border);flex-shrink:0;background:var(--bg);scrollbar-width:none;}
 .fbar::-webkit-scrollbar{display:none;}
 .fp{font-size:11px;border-radius:20px;padding:4px 11px;font-weight:600;white-space:nowrap;cursor:pointer;}
 .fp.a{background:var(--navy);color:white;}
 .fp.i{background:var(--white);border:1px solid var(--border);color:var(--gray);}
-.rlist{padding:12px 16px 0;background:var(--bg);min-height:100%;}
-.ylbl{font-size:11px;font-weight:700;color:var(--blue-dk);letter-spacing:0.7px;margin-bottom:8px;text-transform:uppercase;}
+.rlist{padding:12px 14px 0;background:var(--bg);min-height:100%;}
+.ylbl{font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.7px;margin-bottom:7px;text-transform:uppercase;}
 .rrow{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
 .rrow.hi{background:var(--blue-lt);border-color:rgba(74,127,193,0.3);}
 .rrow.teal{background:#eaf7f0;border-color:rgba(21,128,61,0.25);}
@@ -130,35 +175,31 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
 .rtag.pe{background:#fef3c7;color:#92400e;}
 .rtag.ac{font-size:11px;color:var(--blue-dk);font-weight:700;padding:0;margin-bottom:2px;}
 .rtag.di{font-size:11px;color:var(--red);font-weight:700;padding:0;margin-bottom:2px;}
-.rxcat{font-size:11px;font-weight:700;color:var(--blue-dk);letter-spacing:0.5px;margin-bottom:7px;text-transform:uppercase;}
+.rxcat{font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.5px;margin-bottom:7px;text-transform:uppercase;}
 .rxcat.g{color:var(--gray);}
-
-/* TEAM */
-.thdr{padding:14px 18px 10px;border-bottom:0.5px solid var(--border);flex-shrink:0;background:var(--white);}
+.thdr{padding:14px 16px 10px;border-bottom:0.5px solid var(--border);flex-shrink:0;background:var(--white);}
 .thdr-t{font-family:'Georgia',serif;font-size:19px;color:var(--navy);font-weight:700;}
-.slbl{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.8px;padding:10px 18px 4px;text-transform:uppercase;}
-.tcard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 16px 8px;}
-.trole{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.2px;margin-bottom:1px;text-transform:uppercase;}
-.tname{font-size:16px;color:var(--navy);font-weight:600;font-family:'Georgia',serif;margin-bottom:1px;}
+.slbl{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:0.8px;padding:8px 16px 4px;text-transform:uppercase;}
+.tcard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 14px 8px;}
+.trole{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:0.3px;margin-bottom:1px;text-transform:uppercase;}
+.tname{font-size:15px;color:var(--navy);font-weight:600;font-family:'Georgia',serif;margin-bottom:1px;}
 .torg{font-size:11px;color:var(--gray);}
 .tacts{display:flex;gap:5px;margin-top:8px;}
-.ab{position:relative;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:7px;padding:4px 9px;font-size:10px;color:var(--gray);cursor:pointer;background:var(--cream);gap:3px;white-space:nowrap;}
-.ab.c{width:30px;height:30px;border-radius:50%;padding:0;}
+.ab{position:relative;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:7px;padding:4px 8px;font-size:10px;color:var(--gray);cursor:pointer;background:var(--cream);gap:3px;white-space:nowrap;}
+.ab.c{width:28px;height:28px;border-radius:50%;padding:0;}
 .bdg{position:absolute;top:-5px;right:-5px;width:14px;height:14px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:white;border:1.5px solid white;}
-
-/* PROFILE */
-.ptop{padding:16px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;position:relative;flex-shrink:0;background:var(--white);}
-.pav{width:64px;height:64px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;flex-shrink:0;font-family:'Georgia',serif;}
-.pname{font-family:'Georgia',serif;font-size:22px;font-weight:700;color:var(--navy);}
+.ptop{padding:14px 14px 12px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;position:relative;flex-shrink:0;background:var(--white);}
+.pav{width:60px;height:60px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:white;flex-shrink:0;font-family:'Georgia',serif;}
+.pname{font-family:'Georgia',serif;font-size:21px;font-weight:700;color:var(--navy);}
 .gear{position:absolute;top:12px;right:12px;width:26px;height:26px;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--cream);}
-.statrow{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:0.5px solid var(--border);background:var(--white);}
+.statrow{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:0.5px solid var(--border);background:var(--white);}
 .editbtn{border:1.5px solid var(--navy);border-radius:7px;padding:4px 11px;font-size:11px;color:var(--navy);cursor:pointer;background:white;font-weight:600;}
-.psec{padding:12px 16px 0;background:var(--bg);}
-.psectitle{font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:8px;}
+.psec{padding:11px 14px 0;background:var(--bg);}
+.psectitle{font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:7px;}
 .dbox{border:1px solid var(--border);border-radius:11px;padding:12px;background:var(--white);}
 .drow{font-size:12px;color:var(--navy);line-height:1.7;}
 .drow span{color:var(--gray);}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px;margin-bottom:22px;}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px;margin-bottom:20px;}
 .qcard{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:8px 10px;}
 .qlbl{font-size:10px;color:var(--gray);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.3px;}
 .qtrack{height:4px;background:var(--border);border-radius:2px;margin-bottom:4px;overflow:hidden;}
@@ -170,42 +211,393 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
 <div style="width:375px;margin:0 auto;">
 <div class="phone">
 
-  <div class="sbar" id="sbar">
-    <span class="s-time" id="clock">9:41</span>
-    <div style="display:flex;gap:6px;align-items:center;" id="sbar-icons">
-      <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1" fill="#1B3080"/><rect x="4.5" y="2" width="3" height="10" rx="1" fill="#1B3080"/><rect x="9" y="0" width="3" height="12" rx="1" fill="#1B3080"/><rect x="13.5" y="0" width="2.5" height="12" rx="1" fill="#d1d5db"/></svg>
-      <svg width="15" height="11" viewBox="0 0 24 16"><path d="M12 3C8.5 3 5.3 4.4 3 6.7L1 4.7C3.9 1.8 7.8 0 12 0s8.1 1.8 11 4.7L21 6.7C18.7 4.4 15.5 3 12 3z" fill="#1B3080"/><path d="M12 7c-2.2 0-4.2.9-5.7 2.3L4.5 7.5C6.4 5.6 9.1 4.5 12 4.5s5.6 1.1 7.5 3L17.7 9.3C16.2 7.9 14.2 7 12 7z" fill="#1B3080"/><circle cx="12" cy="13" r="2.5" fill="#1B3080"/></svg>
-      <svg width="24" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="22" height="10" rx="3" stroke="#1B3080" stroke-width="1.2" fill="none"/><rect x="22.5" y="3.5" width="2" height="5" rx="1" fill="#1B3080"/><rect x="1.5" y="2.5" width="16" height="7" rx="2" fill="#1B3080"/></svg>
+  <!-- STATUS BAR -->
+  <div class="sbar" id="sbar" style="background:var(--navy);">
+    <span class="s-time" id="clock" style="color:white;">9:41</span>
+    <div style="display:flex;gap:6px;align-items:center;" id="sicons">
+      <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1" fill="rgba(255,255,255,0.8)"/><rect x="4.5" y="2" width="3" height="10" rx="1" fill="rgba(255,255,255,0.8)"/><rect x="9" y="0" width="3" height="12" rx="1" fill="rgba(255,255,255,0.8)"/><rect x="13.5" y="0" width="2.5" height="12" rx="1" fill="rgba(255,255,255,0.3)"/></svg>
+      <svg width="15" height="11" viewBox="0 0 24 16"><path d="M12 3C8.5 3 5.3 4.4 3 6.7L1 4.7C3.9 1.8 7.8 0 12 0s8.1 1.8 11 4.7L21 6.7C18.7 4.4 15.5 3 12 3z" fill="rgba(255,255,255,0.8)"/><path d="M12 7c-2.2 0-4.2.9-5.7 2.3L4.5 7.5C6.4 5.6 9.1 4.5 12 4.5s5.6 1.1 7.5 3L17.7 9.3C16.2 7.9 14.2 7 12 7z" fill="rgba(255,255,255,0.8)"/><circle cx="12" cy="13" r="2.5" fill="rgba(255,255,255,0.8)"/></svg>
+      <svg width="24" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="22" height="10" rx="3" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" fill="none"/><rect x="22.5" y="3.5" width="2" height="5" rx="1" fill="rgba(255,255,255,0.8)"/><rect x="1.5" y="2.5" width="16" height="7" rx="2" fill="rgba(255,255,255,0.8)"/></svg>
     </div>
   </div>
 
-  <!-- SPLASH -->
-  <div class="screen on" id="s-splash" style="background:var(--navy);flex-direction:column;justify-content:space-between;padding:44px 26px 40px;">
+  <!-- ════════════════════════════════
+       SPLASH — FORKED ENTRY
+  ════════════════════════════════ -->
+  <div class="screen on" id="s-splash" style="background:var(--navy);flex-direction:column;padding:36px 24px 36px;justify-content:space-between;">
     <div>
-      <div style="margin-bottom:24px;">
-        <div style="font-family:'Georgia',serif;font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">Synapticure</div>
-        <p style="font-family:'Georgia',serif;font-size:32px;font-weight:700;color:white;line-height:1.15;margin-bottom:14px;">Virtual specialty care for neurodegenerative diseases</p>
-        <p style="font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:1.2px;text-transform:uppercase;">Cognitive · Movement · Muscular · Neuroimmune</p>
+      <div style="font-family:'Georgia',serif;font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Synapticure</div>
+      <p style="font-family:'Georgia',serif;font-size:28px;font-weight:700;color:white;line-height:1.18;margin-bottom:10px;">Virtual specialty care for neurodegenerative diseases</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:28px;">Cognitive · Movement · Muscular · Neuroimmune</p>
+    </div>
+    <div>
+      <p style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:12px;">What brings you here?</p>
+      <!-- Path A: Diagnosis -->
+      <div style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:14px;padding:16px 18px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:14px;" onclick="go('s-diag-1')">
+        <div style="width:40px;height:40px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="rgba(255,255,255,0.9)" stroke-width="1.8"/><path d="M20 20l-3-3" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">I need a diagnosis</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.55);">Find the right specialist for my symptoms</div>
+        </div>
+        <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
-      <div style="width:48px;height:2px;background:rgba(255,255,255,0.25);margin-bottom:24px;"></div>
-      <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">Covered by insurance. Available in all 50 states. Expert neurologists via video visit.</p>
-    </div>
-    <div>
-      <button class="ob-btn white" style="margin-bottom:10px;" onclick="go('s-signup')">Get Started</button>
-      <button class="ob-btn ghost" onclick="go('s-journey')">Log In</button>
+      <!-- Path B: Trials -->
+      <div style="background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:14px;padding:16px 18px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:14px;" onclick="go('s-trial-1')">
+        <div style="width:40px;height:40px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round"/><path d="M9 12l2 2 4-4" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:700;color:white;margin-bottom:2px;">Match me to trials</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.55);">Find clinical trials that fit my profile</div>
+        </div>
+        <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <!-- Path C: I have a diagnosis -->
+      <div style="background:transparent;border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;" onclick="go('s-signup')">
+        <div style="width:40px;height:40px;background:rgba(255,255,255,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:2px;">I have a diagnosis</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">Set up my care account</div>
+        </div>
+        <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:16px;cursor:pointer;" onclick="go('s-journey')">Log in to existing account</p>
     </div>
   </div>
 
-  <!-- SIGN UP -->
+  <!-- ════════════════════════════════
+       DIAGNOSIS FUNNEL
+  ════════════════════════════════ -->
+
+  <!-- D1: Symptoms -->
+  <div class="screen" id="s-diag-1">
+    <div class="zscreen">
+      <div class="ztop">
+        <div class="ob-back zback" onclick="go('s-splash')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round"/></svg> Back
+        </div>
+        <div class="zprog">
+          <div class="zpip done"></div><div class="zpip"></div><div class="zpip"></div><div class="zpip"></div>
+        </div>
+        <p class="zh">What symptoms are you or your loved one experiencing?</p>
+        <p class="zsub">Select all that apply</p>
+      </div>
+      <div class="zcontent">
+        <div class="zchips">
+          <span class="zchip sel" onclick="toggleChip(this)">Memory loss or confusion</span>
+          <span class="zchip" onclick="toggleChip(this)">Muscle weakness</span>
+          <span class="zchip" onclick="toggleChip(this)">Tremor or shaking</span>
+          <span class="zchip" onclick="toggleChip(this)">Difficulty speaking</span>
+          <span class="zchip" onclick="toggleChip(this)">Difficulty swallowing</span>
+          <span class="zchip" onclick="toggleChip(this)">Balance problems</span>
+          <span class="zchip" onclick="toggleChip(this)">Fasciculations (twitching)</span>
+          <span class="zchip" onclick="toggleChip(this)">Cognitive changes</span>
+          <span class="zchip" onclick="toggleChip(this)">Stiffness or rigidity</span>
+          <span class="zchip" onclick="toggleChip(this)">Fatigue or weakness</span>
+        </div>
+        <button class="zcta" onclick="go('s-diag-2')">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- D2: Duration -->
+  <div class="screen" id="s-diag-2">
+    <div class="zscreen" style="background:#1e3d96;">
+      <div class="ztop">
+        <div class="ob-back zback" onclick="go('s-diag-1')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round"/></svg> Back
+        </div>
+        <div class="zprog">
+          <div class="zpip done"></div><div class="zpip done"></div><div class="zpip"></div><div class="zpip"></div>
+        </div>
+        <p class="zh">How long have these symptoms been present?</p>
+        <p class="zsub">This helps us match you to the right specialist</p>
+      </div>
+      <div class="zcontent">
+        <div class="zchoices">
+          <div class="zchoice" onclick="selZChoice(this,'d2')">
+            <div><div class="zchoice-txt">Less than 6 months</div><div class="zchoice-sub">Recently appeared</div></div>
+            <div class="zchoice-check"></div>
+          </div>
+          <div class="zchoice sel" onclick="selZChoice(this,'d2')">
+            <div><div class="zchoice-txt">6 – 12 months</div><div class="zchoice-sub">Ongoing for under a year</div></div>
+            <div class="zchoice-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+          <div class="zchoice" onclick="selZChoice(this,'d2')">
+            <div><div class="zchoice-txt">1 – 2 years</div><div class="zchoice-sub">Longer term progression</div></div>
+            <div class="zchoice-check"></div>
+          </div>
+          <div class="zchoice" onclick="selZChoice(this,'d2')">
+            <div><div class="zchoice-txt">2+ years</div><div class="zchoice-sub">Chronic or long-standing</div></div>
+            <div class="zchoice-check"></div>
+          </div>
+        </div>
+        <button class="zcta" onclick="go('s-diag-3')">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3: Prior neurologist -->
+  <div class="screen" id="s-diag-3">
+    <div class="zscreen" style="background:#162a6e;">
+      <div class="ztop">
+        <div class="ob-back zback" onclick="go('s-diag-2')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round"/></svg> Back
+        </div>
+        <div class="zprog">
+          <div class="zpip done"></div><div class="zpip done"></div><div class="zpip done"></div><div class="zpip"></div>
+        </div>
+        <p class="zh">Have you seen a neurologist before?</p>
+        <p class="zsub">We'll tailor our specialist match accordingly</p>
+      </div>
+      <div class="zcontent">
+        <div class="zchoices">
+          <div class="zchoice" onclick="selZChoice(this,'d3')">
+            <div><div class="zchoice-txt">Yes — and I have test results</div><div class="zchoice-sub">Bring your records into one place</div></div>
+            <div class="zchoice-check"></div>
+          </div>
+          <div class="zchoice" onclick="selZChoice(this,'d3')">
+            <div><div class="zchoice-txt">Yes — but no clear answers</div><div class="zchoice-sub">Second opinion or further evaluation</div></div>
+            <div class="zchoice-check"></div>
+          </div>
+          <div class="zchoice sel" onclick="selZChoice(this,'d3')">
+            <div><div class="zchoice-txt">No — this is my first step</div><div class="zchoice-sub">We'll guide you from the start</div></div>
+            <div class="zchoice-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+        <button class="zcta" onclick="go('s-diag-result')">Find My Specialist</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- D-RESULT: Specialist match -->
+  <div class="screen" id="s-diag-result">
+    <div style="background:var(--navy);padding:20px 20px 24px;flex-shrink:0;">
+      <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;">Your Specialist Match</div>
+      <p style="font-family:'Georgia',serif;font-size:20px;font-weight:700;color:white;line-height:1.25;">Based on your symptoms, here's who you need</p>
+    </div>
+    <div class="scroll" style="background:var(--bg);">
+      <div style="padding:16px 16px 0;">
+
+        <div style="background:var(--navy);border-radius:14px;padding:16px 18px;margin-bottom:12px;">
+          <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;">Best match</div>
+          <div style="font-family:'Georgia',serif;font-size:17px;font-weight:700;color:white;margin-bottom:4px;">ALS &amp; Neuromuscular Specialist</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.55;margin-bottom:14px;">Your combination of muscle weakness, fasciculations, and difficulty speaking are consistent with motor neuron disease. A neuromuscular specialist is the right first step.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;">EMG recommended</span>
+            <span style="background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;">Genetic panel</span>
+            <span style="background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,0.8);font-weight:600;">MRI imaging</span>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;">
+          <div style="font-size:10px;font-weight:700;color:var(--blue-dk);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;">Also consider</div>
+          <div style="font-family:'Georgia',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:3px;">Movement Disorder Neurologist</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.55;">If stiffness and balance issues are prominent, a movement disorder specialist can rule out Parkinson's or related conditions.</div>
+        </div>
+
+        <div style="background:var(--navy-lt);border:1px solid rgba(27,48,128,0.15);border-radius:14px;padding:14px 16px;margin-bottom:20px;">
+          <div style="font-size:12px;color:var(--navy);line-height:1.6;"><strong>Available in all 50 states</strong> — Synapticure neurologists can see you via video within days, not months.</div>
+        </div>
+
+        <button style="background:var(--navy);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:10px;" onclick="go('s-signup')">Book My Consultation</button>
+        <button style="background:white;color:var(--navy);border:1.5px solid var(--navy);border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-bottom:20px;" onclick="go('s-trial-1')">Also match me to trials →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       TRIALS FUNNEL
+  ════════════════════════════════ -->
+
+  <!-- T1: Condition -->
+  <div class="screen" id="s-trial-1">
+    <div class="zscreen light" style="background:var(--bg);">
+      <div class="ztop">
+        <div class="ob-back zback dark-bg" onclick="go('s-splash')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back
+        </div>
+        <div class="zprog">
+          <div class="zpip done light"></div><div class="zpip light"></div><div class="zpip light"></div><div class="zpip light"></div>
+        </div>
+        <p class="zh light">What is your diagnosis?</p>
+        <p class="zsub light">We'll match you to active trials for your condition</p>
+      </div>
+      <div class="zcontent">
+        <div class="zchoices">
+          <div class="zchoice light sel" onclick="selZChoice(this,'t1')">
+            <div><div class="zchoice-txt light">ALS (Amyotrophic Lateral Sclerosis)</div></div>
+            <div class="zchoice-check light"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t1')">
+            <div><div class="zchoice-txt light">Alzheimer's Disease</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t1')">
+            <div><div class="zchoice-txt light">Parkinson's Disease</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t1')">
+            <div><div class="zchoice-txt light">FTD / Other Dementia</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t1')">
+            <div><div class="zchoice-txt light">Not yet diagnosed</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+        </div>
+        <button class="zcta light" onclick="go('s-trial-2')">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- T2: Genetic testing -->
+  <div class="screen" id="s-trial-2">
+    <div class="zscreen light" style="background:var(--bg);">
+      <div class="ztop">
+        <div class="ob-back zback dark-bg" onclick="go('s-trial-1')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back
+        </div>
+        <div class="zprog">
+          <div class="zpip done light"></div><div class="zpip done light"></div><div class="zpip light"></div><div class="zpip light"></div>
+        </div>
+        <p class="zh light">Have you had genetic testing?</p>
+        <p class="zsub light">Genetic profile is the single biggest factor in trial eligibility</p>
+      </div>
+      <div class="zcontent">
+        <div class="zchoices">
+          <div class="zchoice light sel" onclick="selZChoice(this,'t2')">
+            <div><div class="zchoice-txt light">Yes — I know my mutation</div><div class="zchoice-sub light">e.g. SOD1, TDP43, FUS, C9orf72</div></div>
+            <div class="zchoice-check light"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t2')">
+            <div><div class="zchoice-txt light">Yes — no mutation found</div><div class="zchoice-sub light">Sporadic ALS — still many trials available</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t2')">
+            <div><div class="zchoice-txt light">No — not yet tested</div><div class="zchoice-sub light">We can help arrange testing</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+        </div>
+        <button class="zcta light" onclick="go('s-trial-3')">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- T3: Mutation -->
+  <div class="screen" id="s-trial-3">
+    <div class="zscreen light" style="background:var(--bg);">
+      <div class="ztop">
+        <div class="ob-back zback dark-bg" onclick="go('s-trial-2')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back
+        </div>
+        <div class="zprog">
+          <div class="zpip done light"></div><div class="zpip done light"></div><div class="zpip done light"></div><div class="zpip light"></div>
+        </div>
+        <p class="zh light">Which mutation do you carry?</p>
+        <p class="zsub light">Select the gene variant identified in your test results</p>
+      </div>
+      <div class="zcontent">
+        <div class="zchoices">
+          <div class="zchoice light" onclick="selZChoice(this,'t3')">
+            <div><div class="zchoice-txt light">SOD1</div><div class="zchoice-sub light">Multiple active trials — highest activity</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light sel" onclick="selZChoice(this,'t3')">
+            <div><div class="zchoice-txt light">TDP43 / TBK1</div><div class="zchoice-sub light">Targeted ASO therapies in development</div></div>
+            <div class="zchoice-check light"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t3')">
+            <div><div class="zchoice-txt light">C9orf72</div><div class="zchoice-sub light">Several trials specifically targeting C9</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t3')">
+            <div><div class="zchoice-txt light">FUS</div><div class="zchoice-sub light">Emerging targeted approaches</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+          <div class="zchoice light" onclick="selZChoice(this,'t3')">
+            <div><div class="zchoice-txt light">Other / Not listed</div></div>
+            <div class="zchoice-check light"></div>
+          </div>
+        </div>
+        <button class="zcta light" onclick="go('s-trial-result')">See My Matches</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- T-RESULT: Trial matches -->
+  <div class="screen" id="s-trial-result">
+    <div style="background:var(--navy);padding:20px 20px 24px;flex-shrink:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.8px;text-transform:uppercase;">Trial Matches</div>
+        <div style="background:rgba(255,255,255,0.15);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:white;">3 found</div>
+      </div>
+      <p style="font-family:'Georgia',serif;font-size:18px;font-weight:700;color:white;line-height:1.25;">Trials matched to your TDP43/TBK1 profile</p>
+    </div>
+    <div class="scroll" style="background:var(--bg);">
+      <div style="padding:14px 14px 0;">
+
+        <!-- Trial 1 — strong match -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;">
+          <span class="rtag ap" style="margin-bottom:8px;">Strong match</span>
+          <div style="font-family:'Georgia',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;">TDP43 ASO — Phase I/II</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.55;margin-bottom:10px;">Antisense oligonucleotide targeting TDP-43 mislocalization. Virtual site participation available through Synapticure.</div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+            <span style="background:var(--navy-lt);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--navy);font-weight:700;">TDP43 mutation</span>
+            <span style="background:var(--navy-lt);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--navy);font-weight:700;">Remote eligible</span>
+            <span style="background:var(--navy-lt);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--navy);font-weight:700;">Enrolling now</span>
+          </div>
+          <div style="font-size:11px;color:var(--blue-dk);font-weight:700;">Why you match: TDP43 mutation confirmed · Age &lt; 65 · ALS diagnosis</div>
+        </div>
+
+        <!-- Trial 2 -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;">
+          <span class="rtag pe" style="margin-bottom:8px;">Possible match</span>
+          <div style="font-family:'Georgia',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;">Excitotoxicity — Glutamate Modulation</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.55;margin-bottom:10px;">Targeting neuronal excitotoxicity via glutamate pathway inhibition. Open to sporadic and familial ALS regardless of mutation status.</div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+            <span style="background:#fef3c7;border-radius:20px;padding:3px 9px;font-size:10px;color:#92400e;font-weight:700;">Any ALS subtype</span>
+            <span style="background:#fef3c7;border-radius:20px;padding:3px 9px;font-size:10px;color:#92400e;font-weight:700;">Remote eligible</span>
+          </div>
+          <div style="font-size:11px;color:var(--blue-dk);font-weight:700;">Why you may match: ALS diagnosis · Virtual participation available</div>
+        </div>
+
+        <!-- Trial 3 — ALL ALS -->
+        <div style="background:var(--blue-lt);border:1px solid rgba(74,127,193,0.3);border-radius:14px;padding:16px;margin-bottom:10px;">
+          <span class="rtag ap" style="margin-bottom:8px;">Strong match</span>
+          <div style="font-family:'Georgia',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;">ALL ALS — ASSESS Natural History Study</div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.55;margin-bottom:10px;">NIH-funded nationwide study building a longitudinal dataset for ALS research. Remote visits every 4 months. Contributes to future trial development.</div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+            <span style="background:var(--navy-lt);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--navy);font-weight:700;">All ALS subtypes</span>
+            <span style="background:var(--navy-lt);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--navy);font-weight:700;">Remote — all 50 states</span>
+            <span style="background:var(--navy-lt);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--navy);font-weight:700;">Enrolling now</span>
+          </div>
+          <div style="font-size:11px;color:var(--blue-dk);font-weight:700;">Part of the Synapticure research network · Led by MGH &amp; Barrow</div>
+        </div>
+
+        <button style="background:var(--navy);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-bottom:10px;" onclick="go('s-signup')">Apply for These Trials</button>
+        <button style="background:white;color:var(--navy);border:1.5px solid var(--navy);border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-bottom:20px;" onclick="go('s-diag-1')">Also find a specialist →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       STANDARD SIGNUP FLOW
+  ════════════════════════════════ -->
+
   <div class="screen" id="s-signup">
     <div class="ob">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:26px;">
-        <div class="ob-mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3 6 3 11c0 3.5 1.9 6.6 4.8 8.3L9 21h6l1.2-1.7C19.1 17.6 21 14.5 21 11c0-5-4-9-9-9z" fill="rgba(255,255,255,0.9)"/><path d="M9 11h6M12 8v6" stroke="#1B3080" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;">
+        <div class="ob-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3 6 3 11c0 3.5 1.9 6.6 4.8 8.3L9 21h6l1.2-1.7C19.1 17.6 21 14.5 21 11c0-5-4-9-9-9z" fill="rgba(255,255,255,0.9)"/></svg></div>
         <span class="ob-txt">Synapticure</span>
       </div>
       <div class="ob-prog"><div class="ob-pip done"></div><div class="ob-pip"></div><div class="ob-pip"></div></div>
       <h1 class="ob-h">Create your account</h1>
-      <p class="ob-sub">We'll build your personalized care plan based on your information.</p>
+      <p class="ob-sub">We'll build your personalized care plan from your answers.</p>
       <label class="ob-lbl">First name</label>
       <input class="ob-field" type="text" placeholder="Lee Majors">
       <label class="ob-lbl">Email address</label>
@@ -217,36 +609,22 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
     </div>
   </div>
 
-  <!-- CONDITION -->
   <div class="screen" id="s-condition">
     <div class="ob">
       <div class="ob-back" onclick="go('s-signup')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back</div>
       <div class="ob-prog"><div class="ob-pip done"></div><div class="ob-pip done"></div><div class="ob-pip"></div></div>
-      <h1 class="ob-h">What brings you to Synapticure?</h1>
+      <h1 class="ob-h">Your primary condition</h1>
       <p class="ob-sub">Select the condition you or your loved one is managing.</p>
       <div class="cond-grid">
-        <div class="cond-opt sel" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a9 9 0 100 18A9 9 0 0012 2z" stroke="#1B3080" stroke-width="1.8"/><path d="M8 12h8M12 8v8" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-          <div class="cond-name">ALS &amp; Motor Neuron</div>
-        </div>
-        <div class="cond-opt" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="10" rx="7" ry="6" stroke="#1B3080" stroke-width="1.8"/><path d="M8 16c0 2.2 1.8 4 4 4s4-1.8 4-4" stroke="#1B3080" stroke-width="1.8"/></svg></div>
-          <div class="cond-name">Alzheimer's &amp; Dementia</div>
-        </div>
-        <div class="cond-opt" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#1B3080" stroke-width="1.8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-          <div class="cond-name">Parkinson's &amp; Movement</div>
-        </div>
-        <div class="cond-opt" onclick="sel(this,'cond-opt')">
-          <div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#1B3080" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-          <div class="cond-name">I'm a Caregiver</div>
-        </div>
+        <div class="cond-opt sel" onclick="sel(this,'cond-opt')"><div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a9 9 0 100 18A9 9 0 0012 2z" stroke="#1B3080" stroke-width="1.8"/><path d="M8 12h8M12 8v8" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="cond-name">ALS &amp; Motor Neuron</div></div>
+        <div class="cond-opt" onclick="sel(this,'cond-opt')"><div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="10" rx="7" ry="6" stroke="#1B3080" stroke-width="1.8"/><path d="M8 16c0 2.2 1.8 4 4 4s4-1.8 4-4" stroke="#1B3080" stroke-width="1.8"/></svg></div><div class="cond-name">Alzheimer's &amp; Dementia</div></div>
+        <div class="cond-opt" onclick="sel(this,'cond-opt')"><div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#1B3080" stroke-width="1.8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="cond-name">Parkinson's &amp; Movement</div></div>
+        <div class="cond-opt" onclick="sel(this,'cond-opt')"><div class="cond-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#1B3080" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="cond-name">I'm a Caregiver</div></div>
       </div>
       <button class="ob-btn" onclick="go('s-insurance')">Continue</button>
     </div>
   </div>
 
-  <!-- INSURANCE -->
   <div class="screen" id="s-insurance">
     <div class="ob">
       <div class="ob-back" onclick="go('s-condition')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Back</div>
@@ -264,23 +642,22 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
     </div>
   </div>
 
-  <!-- WELCOME -->
   <div class="screen" id="s-welcome">
     <div class="welbody">
       <div class="welcircle"><svg width="38" height="38" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.8"/></svg></div>
       <h1 class="welh">You're all set, Lee!</h1>
       <p style="font-size:13px;color:var(--gray);line-height:1.65;margin-bottom:20px;">Your dedicated care team is being assembled. You'll meet your Care Navigator within 24 hours.</p>
-      <div class="welpills">
-        <span class="wpill">ALS — Sporadic type</span>
-        <span class="wpill">Medicare covered</span>
-        <span class="wpill">All 50 states</span>
-      </div>
-      <button class="ob-btn" onclick="go('s-journey')">Meet My Care Team</button>
+      <div class="welpills"><span class="wpill">ALS — Sporadic type</span><span class="wpill">Medicare covered</span><span class="wpill">All 50 states</span></div>
+      <button class="ob-btn" onclick="go('s-journey')">Enter My Care Portal</button>
       <p style="font-size:12px;color:var(--gray);margin-top:10px;">Or call: (855) 255-5917</p>
     </div>
   </div>
 
-  <!-- JOURNEY DASHBOARD -->
+  <!-- ════════════════════════════════
+       MAIN APP
+  ════════════════════════════════ -->
+
+  <!-- JOURNEY -->
   <div class="screen" id="s-journey">
     <div class="jhdr">
       <div class="jrow">
@@ -294,58 +671,57 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
       </div>
     </div>
     <div class="scroll" style="background:var(--bg);">
+
+      <!-- Research & Trials wide card -->
+      <div style="padding:14px 14px 0;">
+        <div class="research-card" onclick="go('s-trial-1')">
+          <div class="rc-left">
+            <div class="rc-eyebrow">Research &amp; Trials</div>
+            <div class="rc-title">3 trials match your profile</div>
+            <div class="rc-sub">TDP43 ASO · ALL ALS · Excitotoxicity</div>
+          </div>
+          <div class="rc-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/><path d="M9 12l2 2 4-4" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+
       <div class="dsec">
         <p class="dtitle">My Care</p>
         <div class="cgrid">
           <div class="ncard" onclick="go('s-tests')">
             <div class="nicon" style="background:var(--blue-lt);"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#4a7fc1" stroke-width="1.8"/><path d="M3 9h18M9 21V9" stroke="#4a7fc1" stroke-width="1.8"/></svg></div>
-            <div class="nlabel">Tests</div>
-            <div class="nmeta">7 results · 2 new</div>
+            <div class="nlabel">Tests</div><div class="nmeta">7 results · 2 new</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
           <div class="ncard" onclick="go('s-treatments')">
             <div class="nicon" style="background:#fef3c7;"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#b45309" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-            <div class="nlabel">Treatments</div>
-            <div class="nmeta">Radicava Day 10</div>
+            <div class="nlabel">Treatments</div><div class="nmeta">Radicava Day 10</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
           <div class="ncard" onclick="go('s-team')">
             <div class="nicon" style="background:var(--navy-lt);"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C9.8 2 8 3.8 8 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#1B3080" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-            <div class="nlabel">Team</div>
-            <div class="nmeta">6 members · 3 msgs</div>
+            <div class="nlabel">Team</div><div class="nmeta">6 members · 3 msgs</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
           <div class="ncard" onclick="go('s-profile')">
             <div class="nicon" style="background:#f0e8ff;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#7c3aed" stroke-width="1.8"/><circle cx="12" cy="9" r="3" stroke="#7c3aed" stroke-width="1.8"/><path d="M6 20c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-            <div class="nlabel">Profile</div>
-            <div class="nmeta">QoL avg · 6.3/10</div>
+            <div class="nlabel">Profile</div><div class="nmeta">QoL avg · 6.3/10</div>
             <div class="nchev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/></svg></div>
           </div>
         </div>
       </div>
+
       <div class="dsec">
         <p class="dtitle">To-Do</p>
         <div class="todos">
           <div class="todo" onclick="go('s-treatments')"><div class="tdot" style="background:#e55353;"></div><div style="flex:1;"><div class="ttext">Radicava infusion today — Day 10 of 60</div><div class="tcat">Treatments</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="todo" onclick="go('s-trial-result')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">TDP43 ASO trial — application open</div><div class="tcat">Research</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           <div class="todo" onclick="go('s-tests')"><div class="tdot" style="background:#f59e0b;"></div><div style="flex:1;"><div class="ttext">Neurofilament results ready to review</div><div class="tcat">Tests</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
           <div class="todo" onclick="go('s-team')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Reply to Melissa Smith — Care Navigator</div><div class="tcat">Team</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="todo" onclick="go('s-treatments')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Refill Gabapentin — pharmacy due Apr 20</div><div class="tcat">Treatments</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div class="todo" onclick="go('s-tests')"><div class="tdot" style="background:var(--blue);"></div><div style="flex:1;"><div class="ttext">Mini-Brain screening Wave 6 — schedule Dr. Waller</div><div class="tcat">Tests</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         </div>
       </div>
-      <div class="dsec" style="padding-bottom:20px;">
-        <p class="dtitle">Discovery</p>
-        <div style="background:var(--blue-lt);border:1px solid rgba(74,127,193,0.25);border-radius:12px;padding:13px 14px;margin-bottom:9px;cursor:pointer;" onclick="go('s-treatments')">
-          <div style="font-size:10px;font-weight:700;color:var(--blue-dk);letter-spacing:0.6px;margin-bottom:3px;text-transform:uppercase;">New Trial Match</div>
-          <div style="font-family:'Georgia',serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;">TDP43 ASO</div>
-          <div style="font-size:11px;color:var(--gray);">Targeted therapy — matches your TDP43 mutation</div>
-        </div>
-        <div style="background:var(--navy-lt);border:1px solid rgba(27,48,128,0.15);border-radius:12px;padding:13px 14px;cursor:pointer;" onclick="go('s-treatments')">
-          <div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.6px;margin-bottom:3px;text-transform:uppercase;">Support Tech</div>
-          <div style="font-family:'Georgia',serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px;">Voice Banking — recommended</div>
-          <div style="font-size:11px;color:var(--gray);">Preserve your voice with ModelTalker</div>
-        </div>
-      </div>
+
     </div>
     <div class="bnav" id="bn-journey"></div>
   </div>
@@ -353,7 +729,7 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
   <!-- TESTS -->
   <div class="screen" id="s-tests">
     <div class="shdr"><p class="shdr-t">Tests &amp; Medical Record</p><p class="shdr-s">Search by date, doctor, or test name</p></div>
-    <div class="fbar"><span class="fp a">All</span><span class="fp i">Cure Search</span><span class="fp i">Supportive</span><span class="fp i">Prognosis</span><span class="fp i">Diagnosis</span></div>
+    <div class="fbar"><span class="fp a">All</span><span class="fp i">Cure Search</span><span class="fp i">Supportive</span><span class="fp i">Prognosis</span></div>
     <div class="scroll"><div class="rlist">
       <div class="ylbl">2020</div>
       <div class="rrow hi"><div><span class="rtag pe">In Development</span><div class="rmain">TDP43 ASO</div><div class="rsub">Thomas Waller, MD · 10/01/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
@@ -361,11 +737,9 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
       <div class="rrow"><div><div class="rmain">Diagnosis: ALS</div><div class="rsub">Louise England, NP · 07/14/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">Neurofilament (Prognostic)</div><div class="rsub">Merit Berry, MD · 05/04/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="rrow"><div><div class="rmain">My Mini-Brain Treatment Screening</div><div class="rsub">Tommy Waller, MD · Wave 5 · 03/12/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="rrow"><div><div class="rmain">PET MRI</div><div class="rsub">Merit Berry, MD · Peter Doe, MD · 12/04/2020</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
       <div class="ylbl" style="margin-top:10px;">2019</div>
       <div class="rrow"><div><div class="rmain">Whole Genome Analysis</div><div class="rsub">Merit Berry, MD · 12/02/2019</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="rrow"><div><div class="rmain">EMG</div><div class="rsub">Peter Doe, MD · 11/17/2019</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="rrow" style="margin-bottom:20px;"><div><div class="rmain">Vitamin B12</div><div class="rsub">Peter Doe, MD · 11/17/2019</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="rrow" style="margin-bottom:20px;"><div><div class="rmain">EMG</div><div class="rsub">Peter Doe, MD · 11/17/2019</div></div><svg width="7" height="12" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg></div>
     </div></div>
     <div class="bnav" id="bn-tests"></div>
   </div>
@@ -394,7 +768,6 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
       <div class="tcard"><div class="trole">Care Navigator</div><div class="tname">Melissa Smith</div><div class="torg">Synapticure — Austin, TX</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email<div class="bdg">1</div></div><div class="ab c" style="position:relative;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg><div class="bdg">2</div></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
       <div class="tcard"><div class="trole">Local Neurologist</div><div class="tname">Peter Doe, MD</div><div class="torg">Northwestern — Chicago, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email<div class="bdg">1</div></div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
       <div class="tcard"><div class="trole">Consulting Neurologist</div><div class="tname">Merit Berry, MD</div><div class="torg">MGH — Boston, MA</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
-      <div class="tcard"><div class="trole">Primary Care Provider</div><div class="tname">Louise England, NP</div><div class="torg">Davis &amp; Rossman — Kenilworth, IL</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
       <div class="tcard"><div class="trole">Home Care Nurse</div><div class="tname">Hayim Waller, RN</div><div class="torg">Landmark Health — Chicago, IL</div><div class="tacts"><div class="ab" style="position:relative;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal<div class="bdg">1</div></div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
       <div class="tcard"><div class="trole">Insurance Coordinator</div><div class="tname">Barry White</div><div class="torg">United Healthcare — Minneapolis, MN</div><div class="tacts"><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#5a6478" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#5a6478" stroke-width="1.8" stroke-linecap="round"/></svg> Cal</div><div class="ab"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#5a6478" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="#5a6478" stroke-width="1.8"/></svg> email</div><div class="ab c"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#5a6478" stroke-width="1.8"/></svg></div><div class="ab c"><div style="font-size:8px;color:var(--gray);text-align:center;line-height:1.2;">vid<br>fon</div></div></div></div>
       <div class="slbl">Family</div>
@@ -408,17 +781,11 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
     <div class="scroll" style="background:var(--bg);">
       <div class="ptop">
         <div class="pav">LM</div>
-        <div>
-          <div style="font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:2px;">Patient</div>
-          <div class="pname">Lee Majors</div>
-        </div>
+        <div><div style="font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:2px;">Patient</div><div class="pname">Lee Majors</div></div>
         <div class="gear"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#5a6478" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#5a6478" stroke-width="1.8"/></svg></div>
       </div>
-      <div class="statrow">
-        <span style="font-size:12px;color:var(--navy);">39 years old, 5 ft 11, 155 lb. <span style="font-size:11px;color:var(--gray);">(165 lb. 3m ago)</span></span>
-        <button class="editbtn">edit</button>
-      </div>
-      <div class="psec" style="padding-top:14px;">
+      <div class="statrow"><span style="font-size:12px;color:var(--navy);">39 yrs · 5 ft 11 · 155 lb <span style="font-size:11px;color:var(--gray);">(165 lb 3m ago)</span></span><button class="editbtn">edit</button></div>
+      <div class="psec" style="padding-top:12px;">
         <div class="psectitle">Diagnosis</div>
         <div class="dbox">
           <div class="drow"><span>Condition: </span>ALS — Amyotrophic lateral sclerosis</div>
@@ -428,8 +795,8 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
           <div class="drow" style="margin-top:4px;"><span>Prognosis: </span>Neurofilament pending — Imaging, EMG</div>
         </div>
       </div>
-      <div class="psec" style="padding-bottom:24px;">
-        <div class="psectitle" style="margin-top:14px;">Quality of Life</div>
+      <div class="psec" style="padding-bottom:22px;">
+        <div class="psectitle" style="margin-top:12px;">Quality of Life</div>
         <div class="qgrid">
           <div class="qcard"><div class="qlbl">Typing</div><div class="qtrack"><div class="qfill" style="width:70%;background:var(--blue);"></div></div><div class="qval">7<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
           <div class="qcard"><div class="qlbl">Walking</div><div class="qtrack"><div class="qfill" style="width:40%;background:#e55353;"></div></div><div class="qval">4<span style="font-size:10px;font-weight:400;color:var(--gray);"> /10</span></div></div>
@@ -443,60 +810,81 @@ body{background:#dde3ef;min-height:100vh;display:flex;justify-content:center;ali
     <div class="bnav" id="bn-profile"></div>
   </div>
 
-</div>
+</div><!-- /phone -->
 </div>
 
 <script>
-const TABS = [
-  {id:'journey', lbl:'Journey', svg:'<svg width="22" height="20" viewBox="0 0 26 22" fill="none"><polygon points="2,13 13,3 24,13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 11v9a1 1 0 001 1h4v-5h6v5h4a1 1 0 001-1v-9" stroke-width="1.9" stroke-linecap="round" fill="none"/></svg>'},
-  {id:'tests',   lbl:'Tests',   svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.8"/><path d="M3 9h18M9 21V9" stroke-width="1.8"/></svg>'},
-  {id:'treatments', lbl:'Treat.', svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke-width="2.2" stroke-linecap="round"/></svg>'},
-  {id:'team',    lbl:'Team',    svg:'<svg width="22" height="20" viewBox="0 0 26 22" fill="none"><path d="M13 2C10.8 2 9 3.8 9 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM7 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M21 8c1.1 0 2 .9 2 2s-.9 2-2 2M21 14c1.7.6 3 2.2 3 4M5 8c-1.1 0-2 .9-2 2s.9 2 2 2M5 14c-1.7.6-3 2.2-3 4" stroke-width="1.8" stroke-linecap="round"/></svg>'},
-  {id:'profile', lbl:'Profile', svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke-width="1.8"/><circle cx="12" cy="9" r="3" stroke-width="1.8"/><path d="M6 20c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke-width="1.8" stroke-linecap="round"/></svg>'}
+// ── TABS ──
+const TABS=[
+  {id:'journey',lbl:'Journey',svg:'<svg width="22" height="20" viewBox="0 0 26 22" fill="none"><polygon points="2,13 13,3 24,13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 11v9a1 1 0 001 1h4v-5h6v5h4a1 1 0 001-1v-9" stroke-width="1.9" stroke-linecap="round" fill="none"/></svg>'},
+  {id:'tests',lbl:'Tests',svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.8"/><path d="M3 9h18M9 21V9" stroke-width="1.8"/></svg>'},
+  {id:'treatments',lbl:'Treat.',svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke-width="2.2" stroke-linecap="round"/></svg>'},
+  {id:'team',lbl:'Team',svg:'<svg width="22" height="20" viewBox="0 0 26 22" fill="none"><path d="M13 2C10.8 2 9 3.8 9 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM7 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M21 8c1.1 0 2 .9 2 2s-.9 2-2 2M21 14c1.7.6 3 2.2 3 4M5 8c-1.1 0-2 .9-2 2s.9 2 2 2M5 14c-1.7.6-3 2.2-3 4" stroke-width="1.8" stroke-linecap="round"/></svg>'},
+  {id:'profile',lbl:'Profile',svg:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke-width="1.8"/><circle cx="12" cy="9" r="3" stroke-width="1.8"/><path d="M6 20c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke-width="1.8" stroke-linecap="round"/></svg>'}
 ];
 
-function buildNav(activeId) {
-  return TABS.map(t => {
-    const on = t.id === activeId;
-    const c = on ? '#1B3080' : '#9ca3af';
-    const svg = t.svg.replace(/stroke-width/g, `stroke="${c}" stroke-width`);
-    return `<div class="ni${on?' on':''}" onclick="go('s-${t.id}')">
-      <div style="width:26px;height:22px;display:flex;align-items:center;justify-content:center;">${svg}</div>
-      <span class="lbl">${t.lbl}</span>
-    </div>`;
+const APP=['s-journey','s-tests','s-treatments','s-team','s-profile'];
+
+function buildNav(activeId){
+  return TABS.map(t=>{
+    const on=t.id===activeId, c=on?'#1B3080':'#9ca3af';
+    const svg=t.svg.replace(/stroke-width/g,`stroke="${c}" stroke-width`);
+    return `<div class="ni${on?' on':''}" onclick="go('s-${t.id}')"><div style="width:26px;height:22px;display:flex;align-items:center;justify-content:center;">${svg}</div><span class="lbl">${t.lbl}</span></div>`;
   }).join('');
 }
-
-['journey','tests','treatments','team','profile'].forEach(id => {
-  const el = document.getElementById('bn-' + id);
-  if (el) el.innerHTML = buildNav(id);
+['journey','tests','treatments','team','profile'].forEach(id=>{
+  const el=document.getElementById('bn-'+id);
+  if(el) el.innerHTML=buildNav(id);
 });
 
-function go(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
+const DARK_SCREENS=['s-splash','s-diag-1','s-diag-2','s-diag-3','s-diag-result'];
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
-  const sb = document.getElementById('sbar');
-  if (id === 's-splash') {
-    sb.style.background = '#1B3080';
-    document.getElementById('clock').style.color = 'white';
-  } else {
-    sb.style.background = 'white';
-    document.getElementById('clock').style.color = '';
-  }
+  const sb=document.getElementById('sbar'), cl=document.getElementById('clock');
+  const dark=DARK_SCREENS.includes(id);
+  sb.style.background=dark?'var(--navy)':'white';
+  cl.style.color=dark?'white':'var(--navy)';
+  document.getElementById('sicons').querySelectorAll('rect,path,circle').forEach(e=>{
+    const f=e.getAttribute('fill'), s=e.getAttribute('stroke');
+    if(f&&f!=='none'&&!f.startsWith('url')) e.setAttribute('fill',dark?'rgba(255,255,255,0.8)':'#1B3080');
+    if(s&&s!=='none') e.setAttribute('stroke',dark?'rgba(255,255,255,0.8)':'none');
+  });
 }
 
-function sel(el, cls) {
-  el.closest('.ob').querySelectorAll('.'+cls).forEach(o => o.classList.remove('sel'));
+// single-select for zebra choices
+function selZChoice(el, grp){
+  const parent=el.closest('.zchoices');
+  parent.querySelectorAll('.zchoice').forEach(c=>{
+    c.classList.remove('sel');
+    const chk=c.querySelector('.zchoice-check');
+    if(chk) chk.innerHTML='';
+  });
   el.classList.add('sel');
-  if (cls === 'ins-opt') {
-    el.closest('.ob').querySelectorAll('.ins-chk').forEach(c => { c.innerHTML=''; });
-    el.querySelector('.ins-chk').innerHTML = '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const chk=el.querySelector('.zchoice-check');
+  if(chk){
+    const light=el.classList.contains('light');
+    chk.innerHTML=`<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="${light?'white':'#1B3080'}" stroke-width="1.8" stroke-linecap="round"/></svg>`;
   }
 }
 
-function tick() {
-  const n = new Date(), h = n.getHours()%12||12, m = String(n.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent = h+':'+m;
+// multi-select chips
+function toggleChip(el){ el.classList.toggle('sel'); }
+
+// onboarding single select
+function sel(el,cls){
+  el.closest('.ob').querySelectorAll('.'+cls).forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  if(cls==='ins-opt'){
+    el.closest('.ob').querySelectorAll('.ins-chk').forEach(c=>{c.innerHTML='';});
+    el.querySelector('.ins-chk').innerHTML='<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+}
+
+function tick(){
+  const n=new Date(),h=n.getHours()%12||12,m=String(n.getMinutes()).padStart(2,'0');
+  document.getElementById('clock').textContent=h+':'+m;
 }
 tick(); setInterval(tick,30000);
 </script>
